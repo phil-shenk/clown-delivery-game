@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=9 format=3 uid="uid://dbkmv7mjkj7tu"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
-[ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
+[ext_resource type="PackedScene" uid="uid://ccwlgp14qns1l" path="res://Player.tscn" id="3_1uodv"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
@@ -13,10 +13,6 @@ size = Vector3(10, 1, 10)
 [sub_resource type="SphereMesh" id="SphereMesh_1t3ug"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rtkoi"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
@@ -42,19 +38,7 @@ mesh = SubResource("SphereMesh_1t3ug")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_7nqyd")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.48146)
-collision_layer = 2
-script = ExtResource("2_7buf4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_rtkoi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_n1bws")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.807599, 0.589732, 0, -0.589732, 0.807599, 0, 1.94418, 1.61276)
+[node name="Player" parent="." instance=ExtResource("3_1uodv")]
 
 [node name="BillboardThing" type="Sprite3D" parent="."]
 transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
