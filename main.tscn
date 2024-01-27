@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=12 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
@@ -20,6 +21,9 @@ size = Vector3(10, 1, 10)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
+
+[node name="car" parent="." instance=ExtResource("2_xdqm1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60564, 0.747386, -1.34242)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
