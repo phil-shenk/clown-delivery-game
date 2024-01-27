@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=15 format=3 uid="uid://dbkmv7mjkj7tu"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
-[ext_resource type="PackedScene" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -19,6 +19,8 @@ albedo_texture = ExtResource("1_8yqv2")
 [sub_resource type="SphereMesh" id="SphereMesh_1t3ug"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jgrsl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
 
@@ -67,6 +69,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
 script = ExtResource("2_7buf4")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_jgrsl")
+
 [node name="MeshModel" type="Node3D" parent="Player"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel"]
@@ -85,5 +90,3 @@ texture = ExtResource("3_ew4sl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)
 light_color = Color(1, 0.941176, 0.85098, 1)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]

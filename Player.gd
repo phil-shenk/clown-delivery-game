@@ -33,7 +33,6 @@ var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
 
 
-
 func _input(event):
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
@@ -61,7 +60,6 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
-func _input(ev):
 	if Input.is_key_pressed(KEY_F):
 		# toss some food for good measure
 		var parentLevel : Level = get_parent()
