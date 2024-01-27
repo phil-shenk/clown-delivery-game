@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=10 format=3 uid="uid://dbkmv7mjkj7tu"]
 
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
+[ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -55,3 +56,7 @@ shape = SubResource("CapsuleShape3D_rtkoi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_n1bws")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(10.575, 0, 0, 0, 10.575, 0, 0, 0, 10.575, 2.01513, 2.83659, 0)
+texture = ExtResource("3_ew4sl")
