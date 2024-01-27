@@ -61,7 +61,6 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
-func _input(ev):
 	if Input.is_key_pressed(KEY_F):
 		# toss some food for good measure
 		var parentLevel : Level = get_parent()
