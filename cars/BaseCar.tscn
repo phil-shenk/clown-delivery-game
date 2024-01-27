@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_hobna"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
-size = Vector3(1.972, 1, 3.971)
+size = Vector3(1.972, 1, 4.116)
 
 [node name="car" type="VehicleBody3D"]
 center_of_mass_mode = 1
@@ -65,7 +65,7 @@ suspension_max_force = 10000.0
 [node name="Wheel" parent="wheal3" instance=ExtResource("2_w116c")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1512, 0.0507066, 0.718201, -0.0515799)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1512, 0.0507066, 0.718201, -0.0613482)
 shape = SubResource("BoxShape3D_mm2gk")
 
 [node name="doge-body" parent="." instance=ExtResource("3_hobna")]
