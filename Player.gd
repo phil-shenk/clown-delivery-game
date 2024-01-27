@@ -33,7 +33,6 @@ var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
 
 
-
 func _input(event):
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
