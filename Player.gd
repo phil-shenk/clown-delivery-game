@@ -2,14 +2,8 @@ extends CharacterBody3D
 
 class_name Player
 
-@export var speed: float = 5.0
-@export var jump_velocity: float = 4.5
-
-@export var pedal_speed_added: float = 3
-@export var forward_drag: float = 0.5
-@export var side_move_reduce_coeff: float = 0.5
-@export var acceleration: float = 5
-@export var cam_follow_speed: float = 8
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -61,6 +55,11 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
+	if Input.is_key_pressed(KEY_F):
+		# toss some food for good measure
+		var parentLevel : Level = get_parent()
+		parentLevel.throwFood()
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -69,27 +68,21 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_velocity
+		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	#direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	
-	
-	#if direction:
-		#velocity.x = direction.x
-		#velocity.z = velocity.z + abs(direction.x * pedal_speed_added) - (forward_drag * delta)
-	
-	set_new_velocity(delta)
-	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.z)
-	
-	print("velocity: " + str(velocity))
-	
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
 	move_and_slide()
 	
-
 
 func set_new_velocity(delta):
 	
@@ -132,3 +125,4 @@ func set_new_velocity(delta):
 
 	var move_dir = Vector2(direction.x, direction.z)
 	
+
