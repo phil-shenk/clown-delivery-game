@@ -11,7 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _input(ev):
 	if Input.is_key_pressed(KEY_F):
 		# toss some food for good measure
-		get_parent().throwFood()
+		var parentLevel : Level = get_parent()
+		parentLevel.throwFood()
 
 func _physics_process(delta):
 	# Add the gravity.
