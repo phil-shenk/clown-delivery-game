@@ -51,6 +51,8 @@ func _process(delta):
 	_distance = _zoom_scale * (max_distance - min_distance) + min_distance
 
 func _physics_process(delta):
+	get_parent_node_3d().position = _player.position
+	
 	# lerp the the horizontal and vertical gimbals' rotations towards the corresponding rotation angles
 	# note that we're using lerp instead of lerp_angle because the latter tries to determine the rotation
 	# direction based checked the current and target values, which would cause the camera to twitch around

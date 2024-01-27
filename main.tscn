@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=13 format=3 uid="uid://dbkmv7mjkj7tu"]
 
+[ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhm3v"]
+albedo_texture = ExtResource("1_8yqv2")
 
 [sub_resource type="BoxMesh" id="BoxMesh_67xna"]
 
@@ -22,17 +26,19 @@ size = Vector3(10, 1, 10)
 [node name="Main" type="Node3D"]
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(3.08, 0, 0, 0, 1, 0, 0, 0, 3.08, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_b0pe1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qhm3v")
 mesh = SubResource("BoxMesh_67xna")
 
 [node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99635, 0)
+visible = false
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_sqgk5")
@@ -45,6 +51,11 @@ shape = SubResource("SphereShape3D_7nqyd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
+
+[node name="CamRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ControllableCamera" parent="CamRoot" groups=["camera"] instance=ExtResource("3_f58ys")]
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -61,12 +72,8 @@ mesh = SubResource("CapsuleMesh_n1bws")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel"]
-transform = Transform3D(0.415, 0, 0, 0, 5.44207e-08, 0.415, 0, -0.415, 5.44207e-08, 0, 0, -1.0087)
+transform = Transform3D(0.415, 0, 0, 0, -1.81402e-08, -0.415, 0, 0.415, -1.81402e-08, 0, 0, 1.02901)
 mesh = SubResource("PrismMesh_3umdx")
-
-[node name="CamRoot" type="Node3D" parent="Player"]
-
-[node name="ControllableCamera" parent="Player/CamRoot" instance=ExtResource("3_f58ys")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)

@@ -4,7 +4,10 @@ class_name Player
 
 @export var speed: float = 5.0
 @export var jump_velocity: float = 4.5
-@export var turn_speed: float = 8
+
+@export var pedal_speed_added: float = 3
+@export var forward_drag: float = 0.5
+@export var side_move_reduce_coeff: float = 0.5
 @export var acceleration: float = 5
 @export var cam_follow_speed: float = 8
 
@@ -18,10 +21,17 @@ var direction = Vector3.ZERO
 var move_rot: float = 0
 
 
-@onready var camera: ControllableCamera = $CamRoot/ControllableCamera
+@onready var camera: ControllableCamera = get_tree().get_nodes_in_group("camera")[0]
 @onready var mesh: Node3D = $MeshModel
 
-var horizontal_velocity: Vector3 = Vector3.ZERO
+var new_velocity: Vector3 = Vector3.ZERO
+
+var rotation_amount: float = 0
+@export var rotation_amount_coeff: float = 0.1
+@export var turn_speed: float = 20
+var new_forward_speed: float = 0
+var input_x_turn_delay: float = 0
+
 
 
 func _input(event):
@@ -64,37 +74,61 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	
 	
-	if direction:
-		velocity.x = direction.x
-		velocity.z = direction.z
+	#if direction:
+		#velocity.x = direction.x
+		#velocity.z = velocity.z + abs(direction.x * pedal_speed_added) - (forward_drag * delta)
 	
-	set_horizontal_movement(speed, turn_speed, cam_follow_speed, acceleration, delta)
-	velocity = Vector3(horizontal_velocity.x, velocity.y, horizontal_velocity.z)
+	set_new_velocity(delta)
+	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.z)
+	
+	print("velocity: " + str(velocity))
 	
 	move_and_slide()
 	
 
 
-func set_horizontal_movement(speed, turn_speed, cam_follow_speed, acceleration, delta):
+func set_new_velocity(delta):
 	
-	var move_dir = Vector2(direction.x, direction.z)
-
 	# make the player move towards where the camera is facing by lerping the current movement rotation
 	# towards the camera's horizontal rotation and rotating the raw movement direction with that angle
-	move_rot = lerpf(move_rot, deg_to_rad(camera._rot_h), cam_follow_speed * delta)
-	direction = direction.rotated(Vector3.UP, move_rot)
+	#move_rot = lerpf(move_rot, deg_to_rad(camera._rot_h), cam_follow_speed * delta)
+	#direction = direction.rotated(Vector3.UP, move_rot)
+	
+	#reduce side to side power
+	#direction.x = direction.x * side_move_reduce_coeff
+	
+	#var aim = get_global_transform().basis;
+	#var forward_velocity = aim.z * velocity.length()
+	
+	# Rotate around the object's local Y axis by 0.1 radians.
+	#rotate_object_local(Vector3(0, 1, 0), 0.1)
+	
+	var prev_velocity = velocity
+	prev_velocity.y = 0
+	
+	input_x_turn_delay = lerpf(input_x_turn_delay, input_dir.x, turn_speed * delta)
+	
+	rotation_amount = -input_x_turn_delay
+	
+	rotate_object_local(Vector3(0, 1, 0), rotation_amount * rotation_amount_coeff)
+	
+	
+	var total_drag = prev_velocity.length() * delta * forward_drag
+	new_forward_speed = prev_velocity.length() + (abs(input_x_turn_delay) * pedal_speed_added * delta) - total_drag
+	
+	var aim = get_global_transform().basis;
+	new_velocity = aim.z * new_forward_speed
+	
+	
+	
 
-	# lerp the player's current horizontal velocity towards the horizontal velocity as determined by
-	# the input direction and the given horizontal speed
-	horizontal_velocity = lerp(horizontal_velocity, direction * speed, acceleration * delta)
+	#forward_velocity = forward_velocity.normalized() * (forward_velocity.length() + abs(direction.x * pedal_speed_added) - total_drag)
+	#if forward_velocity.z < 0:
+	#	forward_velocity.z = 0
 
-	# if the player has any amount of movement, lerp the player model's rotation towards the current
-	# movement direction based checked its angle towards the X+ axis checked the XZ plane
-	if move_dir != Vector2.ZERO:
-		#TO-DO: add mesh model rotation here
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-direction.x, -direction.z), turn_speed * delta)
-		pass
+	var move_dir = Vector2(direction.x, direction.z)
+	
