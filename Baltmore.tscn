@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm5dwgohsfp8o"]
+[gd_scene load_steps=9 format=3 uid="uid://bihy6nd1mwuaa"]
 
 [ext_resource type="Script" path="res://Baltmore.gd" id="1_2v0v6"]
-[ext_resource type="PackedScene" uid="uid://ccwlgp14qns1l" path="res://Player.tscn" id="1_rse0y"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_rse0y"]
 [ext_resource type="Texture2D" uid="uid://cdw57y2cqvwlk" path="res://resources/road_texture.png" id="1_x4lyg"]
-[ext_resource type="PackedScene" uid="uid://dyq7a6aiwm7v6" path="res://SmallBuildingA.tscn" id="2_yc25j"]
+[ext_resource type="PackedScene" path="res://SmallBuildingA.tscn" id="2_yc25j"]
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="5_4jmyi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prtdn"]
 size = Vector3(100, 1, 100)
@@ -44,3 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98546, 9.53674e-07, 5.28923
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.661574, -0.608812, -0.437798, -5.86908e-09, -0.583825, 0.81188, -0.74988, 0.537119, 0.386243, 0, 6.70034, 0)
+
+[node name="car" parent="." instance=ExtResource("5_4jmyi")]
+transform = Transform3D(-0.0225128, 0, 1, 0, 1, 0, -1, 0, -0.0225128, 0, 0, 10.903)
