@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=13 format=3 uid="uid://dbkmv7mjkj7tu"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
+[ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
-[ext_resource type="PackedScene" uid="uid://ccwlgp14qns1l" path="res://Player.tscn" id="3_1uodv"]
+[ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
+[ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhm3v"]
+albedo_texture = ExtResource("1_8yqv2")
 
 [sub_resource type="BoxMesh" id="BoxMesh_67xna"]
 
@@ -14,20 +19,29 @@ size = Vector3(10, 1, 10)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rtkoi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_3umdx"]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
 
 [node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_b0pe1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qhm3v")
 mesh = SubResource("BoxMesh_67xna")
 
 [node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99635, 0)
+visible = false
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_sqgk5")
@@ -38,12 +52,34 @@ mesh = SubResource("SphereMesh_1t3ug")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_7nqyd")
 
-[node name="Player" parent="." instance=ExtResource("3_1uodv")]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
+
+[node name="CamRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ControllableCamera" parent="CamRoot" groups=["camera"] instance=ExtResource("3_f58ys")]
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 2
+script = ExtResource("2_7buf4")
 
 [node name="BillboardThing" type="Sprite3D" parent="."]
 transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
 billboard = 2
 texture = ExtResource("3_ew4sl")
 
+[node name="MeshModel" type="Node3D" parent="Player"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel"]
+mesh = SubResource("CapsuleMesh_n1bws")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel"]
+transform = Transform3D(0.415, 0, 0, 0, -1.81402e-08, -0.415, 0, 0.415, -1.81402e-08, 0, 0, 1.02901)
+mesh = SubResource("PrismMesh_3umdx")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.263301, -0.783232, -0.563224, 0, -0.583825, 0.81188, -0.964714, 0.213768, 0.153721, 0, 6.70034, 0)
+transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)
+light_color = Color(1, 0.941176, 0.85098, 1)

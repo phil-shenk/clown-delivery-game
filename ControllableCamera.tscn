@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkle2ehmvhrsa"]
+
+[ext_resource type="Script" path="res://ControllableCamera.gd" id="1_kg02k"]
+
+[node name="ControllableCamera" type="Node3D"]
+script = ExtResource("1_kg02k")
+
+[node name="GimbalH" type="Node3D" parent="."]
+
+[node name="GimbalV" type="Node3D" parent="GimbalH"]
+
+[node name="Camera3D" type="Camera3D" parent="GimbalH/GimbalV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+current = true
