@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
+[ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -24,6 +26,7 @@ albedo_texture = ExtResource("1_8yqv2")
 [sub_resource type="PrismMesh" id="PrismMesh_3umdx"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_drvo6")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
@@ -62,8 +65,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
 script = ExtResource("2_7buf4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_rtkoi")
+[node name="BillboardThing" type="Sprite3D" parent="."]
+transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
+billboard = 2
+texture = ExtResource("3_ew4sl")
 
 [node name="MeshModel" type="Node3D" parent="Player"]
 

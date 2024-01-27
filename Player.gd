@@ -14,6 +14,7 @@ class_name Player
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 var _is_capturing: bool = false
 
 var input_dir = Vector3.ZERO
@@ -62,6 +63,12 @@ func _input(event):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
 
+	if Input.is_key_pressed(KEY_F):
+		# toss some food for good measure
+		var parentLevel : Level = get_parent()
+		parentLevel.throwFood()
+
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -89,7 +96,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-
 
 func set_new_velocity(delta):
 	
@@ -132,3 +138,4 @@ func set_new_velocity(delta):
 
 	var move_dir = Vector2(direction.x, direction.z)
 	
+
