@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func throwFood():
-	var player : Player = $Player
+	var player := $Player
 	var pie_instance : Pie = pie_scene.instantiate()
 	pie_count += 1
 	print(pie_count)

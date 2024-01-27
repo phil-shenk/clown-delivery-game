@@ -18,7 +18,7 @@ var _zoom_scale: float = 0
 @onready var _gimbal_h: Node3D = $GimbalH
 @onready var _gimbal_v: Node3D = $GimbalH/GimbalV
 @onready var _camera: Camera3D = $GimbalH/GimbalV/Camera3D
-@onready var _player: Player = get_tree().get_nodes_in_group("player")[0]
+@onready var _player := get_tree().get_nodes_in_group("player")[0]
 
 var _rot_h: float = 0
 var _rot_v: float = 0
