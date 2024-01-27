@@ -29,6 +29,8 @@ mesh = SubResource("BoxMesh_67xna")
 
 [node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99635, 0)
+collision_layer = 8
+collision_mask = 11
 script = ExtResource("1_sqgk5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
@@ -45,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.48146)
+collision_layer = 2
 script = ExtResource("2_7buf4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
