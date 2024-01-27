@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=8 format=3 uid="uid://dbkmv7mjkj7tu"]
+
+[ext_resource type="Script" path="res://StarterCar.gd" id="1_wh1yg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -8,6 +10,10 @@ size = Vector3(10, 1, 10)
 [sub_resource type="SphereMesh" id="SphereMesh_1t3ug"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gj0s0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wh2oq"]
 
 [node name="Main" type="Node3D"]
 
@@ -34,3 +40,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
+
+[node name="StarterCar" type="VehicleBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42253, 2.29891, 0)
+script = ExtResource("1_wh1yg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StarterCar"]
+shape = SubResource("BoxShape3D_gj0s0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarterCar"]
+mesh = SubResource("BoxMesh_wh2oq")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="StarterCar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44398, -0.48594, -0.42043)
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="StarterCar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47064, -0.48594, 0.315329)
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="StarterCar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457473, -0.48594, 0.245396)
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="StarterCar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382267, -0.48594, -0.426555)
