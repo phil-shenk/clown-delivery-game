@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://duy0dbkychify"]
+
+[ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_iqrfq"]
+[ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_w116c"]
+[ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_hobna"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
+size = Vector3(1.972, 1, 4.116)
+
+[node name="car" type="VehicleBody3D"]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.1, 0)
+script = ExtResource("1_iqrfq")
+STEER_LIMIT = 0.8
+engine_force_value = 100
+
+[node name="wheal0" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="Wheel" parent="wheal0" instance=ExtResource("2_w116c")]
+
+[node name="wheal1" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="Wheel" parent="wheal1" instance=ExtResource("2_w116c")]
+
+[node name="wheal2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, 1.51869)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="Wheel" parent="wheal2" instance=ExtResource("2_w116c")]
+
+[node name="wheal3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, 1.51869)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="Wheel" parent="wheal3" instance=ExtResource("2_w116c")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1512, 0.0507066, 0.718201, -0.0613482)
+shape = SubResource("BoxShape3D_mm2gk")
+
+[node name="doge-body" parent="." instance=ExtResource("3_hobna")]
