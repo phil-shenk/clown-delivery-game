@@ -61,11 +61,6 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
-func _input(ev):
-	if Input.is_key_pressed(KEY_F):
-		# toss some food for good measure
-		var parentLevel : Level = get_parent()
-		parentLevel.throwFood()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -94,7 +89,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-  
+
+
 func set_new_velocity(delta):
 	
 	# make the player move towards where the camera is facing by lerping the current movement rotation
@@ -135,4 +131,4 @@ func set_new_velocity(delta):
 	#	forward_velocity.z = 0
 
 	var move_dir = Vector2(direction.x, direction.z)
-
+	
