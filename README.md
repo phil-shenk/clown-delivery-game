@@ -38,3 +38,17 @@ ideas:
   - hamsters
     - tubes
   - air bud (he works for an abusive clown before being air bud, falls off truck before being euthanized, dog is good at bball)
+  - speed vs dexterity
+  - food throwing as a defense mechanic (not just the final)
+    - paper boy style
+    - saving pies if you can... to throw more at final target
+  - mechanics
+    - how does the movement work? what kind of speed behavior?
+      - jumping over things like ramps
+      - evading traffic, hungry dogs, 30-50 wild boars
+      - stationary obstacles
+    - extension of clown themeing:
+      - seals with ball, tents?
+    - trampolines
+    - turning (faster = bigger turning radius)
+    - 
