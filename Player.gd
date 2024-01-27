@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -13,6 +14,7 @@ var move_rot: float = 0
 
 #TO-DO: add controllable camera script
 @onready var camera
+@onready var mesh: Node3D = $MeshModel
 
 var horizontal_velocity: Vector3 = Vector3.ZERO
 
@@ -59,4 +61,5 @@ func set_horizontal_movement(speed, turn_speed, cam_follow_speed, acceleration, 
 	# movement direction based checked its angle towards the X+ axis checked the XZ plane
 	if move_dir != Vector2.ZERO:
 		#TO-DO: add mesh model rotation here
-		#skin.rotation.y = lerp_angle(skin.rotation.y, atan2(-direction.x, -direction.z), turn_speed * delta)
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(-direction.x, -direction.z), turn_speed * delta)
+		pass

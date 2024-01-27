@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=10 format=3 uid="uid://dbkmv7mjkj7tu"]
 
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
+[ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -45,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 7, 4)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.48146)
 collision_layer = 2
 script = ExtResource("2_7buf4")
@@ -53,5 +54,14 @@ script = ExtResource("2_7buf4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_rtkoi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+[node name="MeshModel" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1.48146)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.48146)
 mesh = SubResource("CapsuleMesh_n1bws")
+skeleton = NodePath("../..")
+
+[node name="CamRoot" type="Node3D" parent="Player"]
+
+[node name="ControllableCamera" parent="Player/CamRoot" instance=ExtResource("3_f58ys")]
