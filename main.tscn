@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=9 format=3 uid="uid://dbkmv7mjkj7tu"]
+
+[ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
+[ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -8,6 +11,10 @@ size = Vector3(10, 1, 10)
 [sub_resource type="SphereMesh" id="SphereMesh_1t3ug"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rtkoi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
 
 [node name="Main" type="Node3D"]
 
@@ -22,6 +29,7 @@ mesh = SubResource("BoxMesh_67xna")
 
 [node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99635, 0)
+script = ExtResource("1_sqgk5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 mesh = SubResource("SphereMesh_1t3ug")
@@ -30,7 +38,17 @@ mesh = SubResource("SphereMesh_1t3ug")
 shape = SubResource("SphereShape3D_7nqyd")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 7, 4)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.48146)
+script = ExtResource("2_7buf4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_rtkoi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_n1bws")
