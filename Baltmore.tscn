@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cm5dwgohsfp8o"]
 
 [ext_resource type="Script" path="res://Baltmore.gd" id="1_2v0v6"]
-[ext_resource type="PackedScene" uid="uid://ccwlgp14qns1l" path="res://Player.tscn" id="1_rse0y"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_rse0y"]
 [ext_resource type="Texture2D" uid="uid://cdw57y2cqvwlk" path="res://resources/road_texture.png" id="1_x4lyg"]
-[ext_resource type="PackedScene" uid="uid://dyq7a6aiwm7v6" path="res://SmallBuildingA.tscn" id="2_yc25j"]
+[ext_resource type="PackedScene" path="res://SmallBuildingA.tscn" id="2_yc25j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prtdn"]
 size = Vector3(100, 1, 100)

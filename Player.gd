@@ -20,8 +20,9 @@ var input_dir = Vector3.ZERO
 var direction = Vector3.ZERO
 var move_rot: float = 0
 
-
-@onready var camera: ControllableCamera = get_tree().get_nodes_in_group("camera")[0]
+#print(get_tree().get_nodes_in_group("camera")[0])
+#@onready var camera: ControllableCamera = get_tree().get_nodes_in_group("camera")[0]
+var camera
 @onready var mesh: Node3D = $MeshModel
 
 var new_velocity: Vector3 = Vector3.ZERO
@@ -32,9 +33,18 @@ var rotation_amount: float = 0
 var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
 
-
+func _ready():
+	print(get_tree())
+	print(get_tree().get_nodes_in_group("camera"))
+	camera = get_tree().get_nodes_in_group("camera")[0]
 
 func _input(event):
+	
+	if Input.is_key_pressed(KEY_F):
+		# toss some food for good measure
+		var parentLevel : Level = get_parent()
+		parentLevel.throwFood()
+		
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -61,11 +71,6 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
-func _input(ev):
-	if Input.is_key_pressed(KEY_F):
-		# toss some food for good measure
-		var parentLevel : Level = get_parent()
-		parentLevel.throwFood()
 
 func _physics_process(delta):
 	# Add the gravity.
