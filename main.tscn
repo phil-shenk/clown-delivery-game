@@ -40,9 +40,6 @@ mesh = SubResource("SphereMesh_1t3ug")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_7nqyd")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 7, 4)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85284, 1.73303, 0)
 
@@ -57,6 +54,10 @@ shape = SubResource("CapsuleShape3D_rtkoi")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_n1bws")
 
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5, 2.51854)
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(10.575, 0, 0, 0, 10.575, 0, 0, 0, 10.575, 2.01513, 2.83659, 0)
+billboard = 1
 texture = ExtResource("3_ew4sl")
