@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyq7a6aiwm7v6"]
+
+[ext_resource type="Script" path="res://SmallBuildingA2.gd" id="1_eupt5"]
+[ext_resource type="PackedScene" uid="uid://spqotnraphwq" path="res://resources/buildings/small_buildingA_testExport.glb" id="3_dau1s"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m5ado"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SmallBuildingA" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_eupt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallBuildingA"]
+shape = SubResource("ConcavePolygonShape3D_m5ado")
+
+[node name="small_buildingA_testExport" parent="SmallBuildingA" instance=ExtResource("3_dau1s")]
