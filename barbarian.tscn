@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://niweq1oe4tk2"]
+[gd_scene load_steps=4 format=3 uid="uid://niweq1oe4tk2"]
 
 [ext_resource type="PackedScene" uid="uid://eh4its42trkm" path="res://villagers/Barbarian.glb" id="1_olefj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g88bv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ewqc"]
 size = Vector3(2.085, 2.475, 1.215)
@@ -66,6 +68,9 @@ transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.440
 
 [node name="TargetRigidBody3D" type="RigidBody3D" parent="." index="2"]
 collision_mask = 3
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_g88bv")
+angular_damp = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TargetRigidBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21, 0)
