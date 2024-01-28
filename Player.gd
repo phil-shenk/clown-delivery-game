@@ -37,6 +37,10 @@ var pedal_decay: float = 2.5
 
 @onready var unicycle_wheel: Node3D = $MeshModel/unicycle_stuff/unicycle_bottom
 
+@onready var squeak_sound: AudioStreamPlayer3D = $squeak_sound
+@onready var squeak_sound2: AudioStreamPlayer3D = $squeak_sound2
+
+
 func _ready():
 	if _is_capturing:
 		print("ENABLED MOUSE CAPTURE")
@@ -53,9 +57,13 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_left"):
 		#print("pushing left pedal")
 		input_x_turn_delay = -1.0*pedal_strength
+		
+		squeak_sound.play()
 	if Input.is_action_just_pressed("ui_right"):
 		#print("pushing right pedal")
 		input_x_turn_delay = pedal_strength
+		squeak_sound2.play()
+		
 	
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
@@ -130,7 +138,6 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	#direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
 	
 	
 	#if direction:
