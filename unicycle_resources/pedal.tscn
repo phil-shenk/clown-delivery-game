@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://joqi5fkql2ib"]
+
+[ext_resource type="PackedScene" uid="uid://d2hidf0h1way4" path="res://unicycle_resources/pedal.glb" id="1_cktnj"]
+
+[node name="pedal" instance=ExtResource("1_cktnj")]

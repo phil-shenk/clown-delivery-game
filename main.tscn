@@ -1,4 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbkmv7mjkj7tu"]
+[gd_scene load_steps=20 format=3 uid="uid://du60ctaf0pjq3"]
+
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -7,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="PackedScene" uid="uid://dptiqqb2lqxoc" path="res://clown.tscn" id="7_boc7u"]
+[ext_resource type="PackedScene" uid="uid://di05k8ionf1is" path="res://unicycle_resources/unicycle_top.tscn" id="8_mqe6g"]
+[ext_resource type="PackedScene" uid="uid://b2jp5gisoad1m" path="res://unicycle_resources/unicycle_bottom.tscn" id="9_37aaf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -25,6 +29,8 @@ albedo_texture = ExtResource("1_8yqv2")
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_3umdx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jndq3"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
@@ -82,14 +88,34 @@ turn_speed = null
 shape = SubResource("CapsuleShape3D_jgrsl")
 
 [node name="MeshModel" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520238, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel"]
+visible = false
 mesh = SubResource("CapsuleMesh_n1bws")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel"]
-transform = Transform3D(0.415, 0, 0, 0, -1.81402e-08, -0.415, 0, 0.415, -1.81402e-08, 0, 0, 1.02901)
+transform = Transform3D(0.256082, 0, 0, 0, -1.81402e-08, -0.0728386, 0, 0.415, -3.18387e-09, 0, 0, 1.02901)
 mesh = SubResource("PrismMesh_3umdx")
+
+[node name="clown" parent="Player/MeshModel" instance=ExtResource("7_boc7u")]
+transform = Transform3D(-0.31, 0, -2.71011e-08, 0, 0.31, 0, 2.71011e-08, 0, -0.31, 0, 0.935, 0)
+
+[node name="r_leg" type="Node3D" parent="Player/MeshModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214585, -0.304275, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_leg"]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_jndq3")
+
+[node name="unicycle_stuff" type="Node3D" parent="Player/MeshModel"]
+
+[node name="unicycle_top" parent="Player/MeshModel/unicycle_stuff" instance=ExtResource("8_mqe6g")]
+transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.21, 0)
+
+[node name="unicycle_bottom" parent="Player/MeshModel/unicycle_stuff" instance=ExtResource("9_37aaf")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.21, 0)
 
 [node name="BillboardThing" type="Sprite3D" parent="."]
 transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
