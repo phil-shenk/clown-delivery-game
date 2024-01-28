@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2jp5gisoad1m"]
+
+[ext_resource type="PackedScene" uid="uid://bedxrqe3nujcs" path="res://unicycle_resources/unicycle_bottom.glb" id="1_j67m8"]
+
+[node name="unicycle_bottom" instance=ExtResource("1_j67m8")]
