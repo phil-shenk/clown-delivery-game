@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=34 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
@@ -287,6 +287,29 @@ script = ExtResource("23_ykm5e")
 transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, 37.968, 0.597, -5.14625)
 script = ExtResource("23_ykm5e")
 
+[node name="Barbarian4" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, -3.73107, 0.597, -36.9425)
+script = ExtResource("23_ykm5e")
+
+[node name="Barbarian5" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(-0.95517, 0, -0.296059, 0, 1, 0, 0.296059, 0, -0.95517, -27.5771, 0.597, -58.9226)
+script = ExtResource("23_ykm5e")
+
+[node name="Barbarian6" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(-0.95517, 0, -0.296059, 0, 1, 0, 0.296059, 0, -0.95517, 37.8442, 0.597, -39.608)
+script = ExtResource("23_ykm5e")
+
+[node name="Barbarian7" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(0.17492, 0, -0.984583, 0, 1, 0, 0.984583, 0, 0.17492, 18.5327, 0.597, -27.1693)
+script = ExtResource("23_ykm5e")
+
+[node name="Barbarian8" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(0.17492, 0, -0.984583, 0, 1, 0, 0.984583, 0, 0.17492, -11.7, 0.597, -12.4358)
+script = ExtResource("23_ykm5e")
+
+[node name="Barbarian9" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(0.91187, 0, -0.41048, 0, 1, 0, 0.41048, 0, 0.91187, -52.6747, 0.597, -27.6935)
+script = ExtResource("23_ykm5e")
 [node name="CarPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 curve = SubResource("Curve3D_8rk5r")
