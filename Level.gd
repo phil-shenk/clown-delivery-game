@@ -20,6 +20,9 @@ var aimPathPolygon
 var player
 const AIM_PATH_POINTS = 32
 
+@onready var honk_sound: AudioStreamPlayer3D = $honk_sound1
+@onready var honk_sound2: AudioStreamPlayer3D = $honk_sound2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scoreLabel = $UICanvasLayer/ScoreLabel
@@ -49,6 +52,8 @@ func _process(delta):
 		
 		# show path3d for rangefinding
 		aimPathPolygon.set_visible(true)
+		honk_sound.play()
+		
 	
 	if(Input.is_action_pressed("throw_pie")):
 		throw_force += throw_force_scaling*delta
@@ -89,6 +94,7 @@ func _process(delta):
 		
 			
 	if(Input.is_action_just_released("throw_pie")):
+		honk_sound2.play()
 		# reset throw force, and throw it
 		throwFood()
 		#print(throw_force)
