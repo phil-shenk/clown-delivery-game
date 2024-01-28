@@ -63,7 +63,7 @@ func _process(delta):
 		var y0 = player.position.y
 		var v = throw_force * 1.0 # need to find scaling
 		var distance = v*cos(angle) * (v*sin(angle) + sqrt(v**2 * sin(angle) + 2*g*y0)) / g
-		print(distance)
+		#print(distance)
 		
 		for i in range(AIM_PATH_POINTS):
 			# need evenly-spaced x points from 0 to distance
