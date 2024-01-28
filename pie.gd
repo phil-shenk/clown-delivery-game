@@ -16,6 +16,7 @@ func _process(delta):
 func addImpulse(impulse):
 	var rigidBody = $RigidBody3D
 	rigidBody.apply_central_impulse(impulse)
+	rigidBody.apply_torque_impulse((Vector3((randi()%50)*10.0,(randi()%50)*10.0,(randi()%50))))
 
 
 func _on_rigid_body_3d_body_entered(body: Node3D):
