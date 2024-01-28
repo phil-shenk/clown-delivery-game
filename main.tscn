@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=36 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
@@ -25,9 +25,7 @@
 [ext_resource type="PackedScene" path="res://resources/buildings/SmallF.tscn" id="22_o73l6"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
-
-[ext_resource type="Material" uid="uid://cfjrlls5ay6s" path="res://new_procedural_sky_material.tres" id="25_sgb85"]
-[ext_resource type="PackedScene" uid="uid://ba8jp66w27yob" path="res://world_environment.tscn" id="25_u8am2"]
+[ext_resource type="PackedScene" path="res://world_environment.tscn" id="25_u8am2"]
 [ext_resource type="AudioStream" uid="uid://cbon5t3qi4qv7" path="res://honkp1.wav" id="26_1pqu3"]
 [ext_resource type="AudioStream" uid="uid://b1w62hkd8dduh" path="res://honkp2.wav" id="27_nbpf3"]
 
@@ -138,10 +136,10 @@ color = Color(0.45098, 1, 0.462745, 1)
 polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
 
 [node name="ScoreLabel" type="Label" parent="UICanvasLayer"]
-offset_left = 1044.0
-offset_top = 8.0
-offset_right = 1125.0
-offset_bottom = 31.0
+offset_left = 959.0
+offset_top = 10.0
+offset_right = 1040.0
+offset_bottom = 33.0
 text = "Score: 0"
 
 [node name="LargeA" parent="." instance=ExtResource("11_gxh2p")]
@@ -221,9 +219,6 @@ transform = Transform3D(0.0165973, 0, 0.999862, 0, 1, 0, -0.999862, 0, 0.0165973
 
 [node name="LargeF" parent="." instance=ExtResource("15_g21jq")]
 transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, -59.8766, 0.326422, -54.7138)
-
-[node name="LargeF7" parent="." instance=ExtResource("15_g21jq")]
-transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, 17.9319, 0.326422, -62.365)
 
 [node name="LargeF6" parent="." instance=ExtResource("15_g21jq")]
 transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, -61.6972, 0.326422, -7.43192)
@@ -310,6 +305,7 @@ script = ExtResource("23_ykm5e")
 [node name="Barbarian9" parent="." instance=ExtResource("22_xtpsq")]
 transform = Transform3D(0.91187, 0, -0.41048, 0, 1, 0, 0.41048, 0, 0.91187, -52.6747, 0.597, -27.6935)
 script = ExtResource("23_ykm5e")
+
 [node name="CarPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 curve = SubResource("Curve3D_8rk5r")
@@ -327,4 +323,3 @@ curve = SubResource("Curve3D_8rk5r")
 [node name="CarPathCar2" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 curve = SubResource("Curve3D_6s85f")
-
