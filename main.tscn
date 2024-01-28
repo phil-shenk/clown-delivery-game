@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=17 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -7,19 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cm5dwgohsfp8o" path="res://Baltmore.tscn" id="2_ytgp1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
-[ext_resource type="PackedScene" uid="uid://dsf2d8la6awnm" path="res://clown.tscn" id="7_boc7u"]
-[ext_resource type="Script" path="res://materials/leg_r.gd" id="8_46xvn"]
-[ext_resource type="PackedScene" uid="uid://di05k8ionf1is" path="res://unicycle_resources/unicycle_top.tscn" id="8_mqe6g"]
-[ext_resource type="Material" uid="uid://drq560wua55wb" path="res://materials/clown_pants_mat.tres" id="9_0l0gh"]
-[ext_resource type="PackedScene" uid="uid://b2jp5gisoad1m" path="res://unicycle_resources/unicycle_bottom.tscn" id="9_37aaf"]
-[ext_resource type="Script" path="res://leg_l.gd" id="10_7qwlo"]
-[ext_resource type="PackedScene" uid="uid://joqi5fkql2ib" path="res://unicycle_resources/pedal.tscn" id="12_poexr"]
-[ext_resource type="PackedScene" uid="uid://d00p1iiqcrmvq" path="res://unicycle_resources/clown_shoe.tscn" id="13_dww0d"]
-[ext_resource type="Script" path="res://unicycle_resources/pedal_r.gd" id="13_x7fme"]
-[ext_resource type="Script" path="res://unicycle_resources/pedal_l.gd" id="16_dn2f1"]
+[ext_resource type="PackedScene" uid="uid://dhtngxob8q6d5" path="res://Player.tscn" id="7_th2hm"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
-[ext_resource type="PackedScene" uid="uid://ctxowu5v084oc" path="res://player.tscn" id="7_th2hm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)

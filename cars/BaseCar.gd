@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		return
 	var steer_target = patrol_points[patrol_index]
 	if position.distance_to(steer_target) < 8:
-		print("short distance "+str(position.distance_to(steer_target)))
+		#print("short distance "+str(position.distance_to(steer_target)))
 		patrol_index = wrapi(patrol_index + 1, 0, patrol_points.size())
 		steer_target = patrol_points[patrol_index]
 	var target_vector = (steer_target-position).normalized()

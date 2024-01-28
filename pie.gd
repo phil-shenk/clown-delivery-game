@@ -14,8 +14,6 @@ func _process(delta):
 	pass
 
 func addImpulse(impulse):
-	print("adding impulse")
-	print(impulse)
 	var rigidBody = $RigidBody3D
 	rigidBody.apply_central_impulse(impulse)
 

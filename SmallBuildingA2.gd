@@ -4,7 +4,7 @@ extends StaticBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var mesh = $small_buildingA_testExport/tmpParent/small_buildingA
-	print(mesh)
+	#print(mesh)
 	var collision_shape := $CollisionShape3D
 	var concave_polygon : ConcavePolygonShape3D = collision_shape.shape
 	concave_polygon.set_faces(mesh.get_mesh().get_faces())
