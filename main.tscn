@@ -119,3 +119,9 @@ texture = ExtResource("3_ew4sl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)
 light_color = Color(1, 0.941176, 0.85098, 1)
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ThrowForceBar" type="Polygon2D" parent="UICanvasLayer"]
+color = Color(0.45098, 1, 0.462745, 1)
+polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
