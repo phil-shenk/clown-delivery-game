@@ -41,7 +41,7 @@ albedo_texture = ExtResource("1_8yqv2")
 [sub_resource type="Curve3D" id="Curve3D_8rk5r"]
 bake_interval = 11.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, -0.293, 0.5, 42.642, 0, 0, 0, 0, 0, 0, 6.59285, 4.09248, 60.3527, 0, 0, 0, 0, 0, 0, 33.534, 0.5, 65.058, 0, 0, 0, 0, 0, 0, 52.72, 0.5, 65.696, 0, 0, 0, 0, 0, 0, 79.0447, 2.67993, 61.7044, 0, 0, 0, 0, 0, 0, 79.497, 0.5, 43.857, 0, 0, 0, 0, 0, 0, 80.658, 0.5, 3.737),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.4634, 1.0183, 7.11608, 0, 0, 0, 0, 0, 0, 94.4693, 1.22218, 6.36729, 0, 0, 0, 0, 0, 0, 114.958, 1.56567, -11.8331, 0, 0, 0, 0, 0, 0, 113.34, 2.93073, -64.6554, 0, 0, 0, 0, 0, 0, 97.4166, 3.5118, -75.8886, 0, 0, 0, 0, 0, 0, 22.4865, 3.69657, -75.3716, 0, 0, 0, 0, 0, 0, 13.5033, 3.05815, -62.9359, 0, 0, 0, 0, 0, 0, 10.5891, 2.23625, -4.65896),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -53,7 +53,7 @@ script = ExtResource("1_drvo6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326422, -7.507)
 
 [node name="car" parent="." instance=ExtResource("2_xdqm1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60564, 0.747386, -3.94381)
+transform = Transform3D(0.0220242, 0, 0.999757, 0, 1, 0, -0.999757, 0, 0.0220242, 9.66005, 0.747386, 7.11056)
 mass = 100.0
 center_of_mass = Vector3(0, 0, 0)
 
@@ -107,9 +107,6 @@ shadow_reverse_cull_face = true
 shadow_opacity = 0.8
 shadow_blur = 5.0
 
-[node name="CarPath" type="Path3D" parent="."]
-curve = SubResource("Curve3D_8rk5r")
-
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ThrowForceBar" type="Polygon2D" parent="UICanvasLayer"]
@@ -117,16 +114,16 @@ color = Color(0.45098, 1, 0.462745, 1)
 polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
 
 [node name="LargeA" parent="." instance=ExtResource("11_gxh2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7655, 0, 0.920708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0541, 1.42119, -7.47256)
 
 [node name="LargeB" parent="." instance=ExtResource("11_r28lg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9697, 3.8147e-06, -5.80355)
 
 [node name="LargeC" parent="." instance=ExtResource("12_kf6df")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9735, 3.8147e-06, -8.53399)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0835, 3.8147e-06, -8.53399)
 
 [node name="LargeD" parent="." instance=ExtResource("13_c1c10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3221, 0, 7.84323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2434, 0.71965, 21.0863)
 
 [node name="LargeA2" parent="." instance=ExtResource("11_gxh2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12197, 0.326422, -88.3778)
@@ -168,13 +165,13 @@ transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082
 transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, 99.4791, 0.326422, -93.0589)
 
 [node name="LargeG" parent="." instance=ExtResource("16_l48at")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01325, 0.326422, -48.7409)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0595, 0.326422, -48.7409)
 
 [node name="SmallA" parent="." instance=ExtResource("17_rkk7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82737, 0.326422, -67.696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0822, 0.326422, -67.696)
 
 [node name="SmallB" parent="." instance=ExtResource("18_i7l1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08551, 0.326422, -68.3096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16932, 0.326422, -68.3096)
 
 [node name="SmallC" parent="." instance=ExtResource("19_6m4m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0029, 0.326422, -44.7258)
@@ -192,15 +189,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1611, 0.32642, -43.1174)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.56267, 0, -5.29046)
 
 [node name="Barbarian" parent="." instance=ExtResource("22_xtpsq")]
-transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -2.027, 0.619, 14.1049)
+transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -37.1554, 0.619, -43.6653)
 script = ExtResource("23_ykm5e")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("25_u8am2")]
 
 [node name="Barbarian2" parent="." instance=ExtResource("22_xtpsq")]
-transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -18.813, 0.445, 20.641)
+transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -18.813, 0.445, -114.016)
 script = ExtResource("23_ykm5e")
 
 [node name="Barbarian3" parent="." instance=ExtResource("22_xtpsq")]
-transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, 37.968, 0.597, 30.532)
+transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, 37.968, 0.597, -5.14625)
 script = ExtResource("23_ykm5e")
+
+[node name="CarPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
+curve = SubResource("Curve3D_8rk5r")
