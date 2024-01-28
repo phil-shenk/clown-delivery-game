@@ -38,6 +38,14 @@ albedo_texture = ExtResource("1_8yqv2")
 
 [sub_resource type="PrismMesh" id="PrismMesh_3umdx"]
 
+[sub_resource type="Curve3D" id="Curve3D_8rk5r"]
+bake_interval = 11.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, -0.293, 0.5, 42.642, 0, 0, 0, 0, 0, 0, 6.59285, 4.09248, 60.3527, 0, 0, 0, 0, 0, 0, 33.534, 0.5, 65.058, 0, 0, 0, 0, 0, 0, 52.72, 0.5, 65.696, 0, 0, 0, 0, 0, 0, 79.0447, 2.67993, 61.7044, 0, 0, 0, 0, 0, 0, 79.497, 0.5, 43.857, 0, 0, 0, 0, 0, 0, 80.658, 0.5, 3.737),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jndq3"]
 
 [node name="Main" type="Node3D"]
@@ -48,9 +56,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326422, -99.424)
 
 [node name="car" parent="." instance=ExtResource("2_xdqm1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60564, 0.747386, -3.94381)
+mass = 100.0
+center_of_mass = Vector3(0, 0, 0)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(18.825, 0, 0, 0, 0.36, 0, 0, 0, 16.865, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_b0pe1")
@@ -187,6 +197,9 @@ texture = ExtResource("3_ew4sl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)
 light_color = Color(1, 0.941176, 0.85098, 1)
+
+[node name="CarPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8rk5r")
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
