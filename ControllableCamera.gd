@@ -25,9 +25,10 @@ var _rot_v: float = 0
 var _distance: float = 0
 
 # slide along aim_vector
-@export var isAiming = false
-@export var aim_speed: float = 10
-@export var aim_vector: Vector3 = Vector3(0,1,0)
+var isAiming = false
+var aim_zoom: float = 0.01
+var aim_speed: float = 10
+var aim_vector: Vector3 = Vector3(0,2,0)
 var camera_offset = Vector3(0,0,0)
 
 func _ready():
@@ -54,13 +55,18 @@ func _process(delta):
 
 	# calculate the target camera distance based checked the zoom scale value of the controls node and the
 	# distance range
-	_distance = _zoom_scale * (max_distance - min_distance) + min_distance
+	if(isAiming):
+		_distance = aim_zoom * (max_distance - min_distance) + min_distance
+	else:
+		_distance = _zoom_scale * (max_distance - min_distance) + min_distance
 
 func _physics_process(delta):
 	
 	if (isAiming):
+		# lerp toward offset of aim_vector
 		camera_offset = lerp(camera_offset, aim_vector, aim_speed * delta)
 	else:
+		# lerp back to no offset
 		camera_offset = lerp(camera_offset, Vector3(0,0,0), aim_speed * delta)
 	
 	get_parent_node_3d().position = _player.position + camera_offset
@@ -74,9 +80,8 @@ func _physics_process(delta):
 
 	# lerp the camera's current local Z position towards the distance variable as determined by the
 	# controls node's zoom scale value in the _process method
-	if(isAiming):
-		_distance *= 0.25
-		Vector3(0,0,1)
-		
+	#if(isAiming):
+	#	_distance *= aim_zoom
+	
 	_camera.transform.origin.z = lerpf(_camera.transform.origin.z, _distance, zoom_speed * delta)
 
