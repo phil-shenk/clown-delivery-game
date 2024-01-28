@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7i3ftsd2pgoo" path="res://resources/city_blocks.png" id="1_qj1jt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prtdn"]
-size = Vector3(100, 1, 100)
+size = Vector3(256, 1, 256)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og20l"]
 albedo_texture = ExtResource("1_qj1jt")
