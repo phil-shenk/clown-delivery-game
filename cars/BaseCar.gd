@@ -6,7 +6,7 @@ var patrol_points
 var patrol_index = 0
 
 func _ready():
-	patrol_path = get_parent().get_node("CarPath")
+	patrol_path = get_parent().get_node("CarPath"+name)
 	if patrol_path:
 		patrol_points = patrol_path.curve.get_baked_points()
 		set_engine_force(engine_force_value)

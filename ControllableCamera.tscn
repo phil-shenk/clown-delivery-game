@@ -1,11 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkle2ehmvhrsa"]
 
 [ext_resource type="Script" path="res://ControllableCamera.gd" id="1_kg02k"]
-
-[sub_resource type="Environment" id="Environment_m5x4i"]
-ambient_light_source = 3
-ambient_light_color = Color(0.854902, 0.733333, 0.65098, 1)
-ssil_enabled = true
+[ext_resource type="Environment" uid="uid://bck7bw7av34bj" path="res://world_environment.tres" id="2_qhsqg"]
 
 [node name="ControllableCamera" type="Node3D"]
 script = ExtResource("1_kg02k")
@@ -16,5 +12,5 @@ script = ExtResource("1_kg02k")
 
 [node name="Camera3D" type="Camera3D" parent="GimbalH/GimbalV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-environment = SubResource("Environment_m5x4i")
+environment = ExtResource("2_qhsqg")
 current = true

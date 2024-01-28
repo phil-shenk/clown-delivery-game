@@ -10,6 +10,8 @@ const min_throw_force = 5.0
 const max_throw_force = 100.0
 const throw_force_scaling = 10.0
 
+var scoreLabel
+
 # could also use @onready
 var camera : ControllableCamera
 var forceBar
@@ -23,6 +25,7 @@ const AIM_PATH_POINTS = 32
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	scoreLabel = $UICanvasLayer/ScoreLabel
 	camera = $CamRoot/ControllableCamera
 	forceBar = $UICanvasLayer/ThrowForceBar
 	aimPath = $Player/AimPath3D
@@ -106,6 +109,7 @@ func _process(delta):
 	if new_targets_hit > targets_hit:
 		targets_hit = new_targets_hit
 		print("new target hit! count is now ", new_targets_hit)
+		scoreLabel.text = "Score: "+str(targets_hit)
 
 
 func throwFood():
@@ -118,6 +122,7 @@ func throwFood():
 	var throw_direction = getThrowDirection()
 	
 	pie_instance.addImpulse(throw_direction * throw_force)
+
 	add_child(pie_instance)
 	
 func getThrowDirection():
