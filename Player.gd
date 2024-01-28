@@ -34,6 +34,9 @@ var input_x_turn_delay: float = 0
 var pedal_strength: float = 1
 var pedal_decay: float = 2.5
 
+
+@onready var unicycle_wheel: Node3D = $MeshModel/unicycle_stuff/unicycle_bottom
+
 func _ready():
 	if _is_capturing:
 		print("ENABLED MOUSE CAPTURE")
@@ -41,7 +44,7 @@ func _ready():
 	else:
 		print("DISABLED MOUSE CAPTURE")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+
 func _input(event):
 	# focus on pie-throwing
 	camera.isAiming = Input.is_action_pressed("aim_pie")
@@ -180,7 +183,7 @@ func set_new_velocity(delta):
 	var aim = get_global_transform().basis;
 	new_velocity = aim.z * new_forward_speed
 	
-	
+	unicycle_wheel.rotate_object_local(Vector3(1, 0, 0), new_forward_speed * 0.1)
 	
 
 	#forward_velocity = forward_velocity.normalized() * (forward_velocity.length() + abs(direction.x * pedal_speed_added) - total_drag)
