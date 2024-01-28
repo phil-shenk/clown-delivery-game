@@ -38,6 +38,8 @@ func _ready():
 	for i in range(AIM_PATH_POINTS):
 		aimPath.curve.add_point(Vector3(i,0,0))
 		
+	scoreLabel.text = "Score: 0 out of "+str(count_targets())	
+		
 	print("READY")
 
 func _input(delta):
@@ -109,7 +111,7 @@ func _process(delta):
 	if new_targets_hit > targets_hit:
 		targets_hit = new_targets_hit
 		print("new target hit! count is now ", new_targets_hit)
-		scoreLabel.text = "Score: "+str(targets_hit)
+		scoreLabel.text = "Score: "+str(targets_hit)+" out of "+str(count_targets())
 
 
 func throwFood():
@@ -135,7 +137,15 @@ func getThrowDirection():
 func count_targets_hit() -> int:
 	var hit_count = 0
 	for child in get_children():
-		if child.has_node("TargetRigidBody3D"):
+		if child.has_method("get_hit"):
 			if child.was_hit:
 				hit_count += 1
 	return hit_count
+
+
+func count_targets() -> int:
+	var count = 0
+	for child in get_children():
+		if child.has_method("get_hit"):
+			count += 1
+	return count
