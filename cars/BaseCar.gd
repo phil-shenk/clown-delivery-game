@@ -1,57 +1,52 @@
 extends VehicleBody3D
 
+@export var patrol_path: Path3D
+@export var engine_force_value = 15
+var patrol_points
+var patrol_index = 0
 
-@export var STEER_SPEED = 1.5
-@export var STEER_LIMIT = 0.6
-var steer_target = 0
-@export var engine_force_value = 40
-var car_control_enabled = false
+func _ready():
+	patrol_path = get_parent().get_node("CarPath")
+	if patrol_path:
+		patrol_points = patrol_path.curve.get_baked_points()
+		set_engine_force(engine_force_value)
 
-
-func _physics_process(delta):
-	if not car_control_enabled:
+func _physics_process(delta: float) -> void:
+	if !patrol_path:
 		return
-	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
-	traction(speed)
+	var steer_target = patrol_points[patrol_index]
+	if position.distance_to(steer_target) < 8:
+		print("short distance "+str(position.distance_to(steer_target)))
+		patrol_index = wrapi(patrol_index + 1, 0, patrol_points.size())
+		steer_target = patrol_points[patrol_index]
+	var target_vector = (steer_target-position).normalized()
+	var target_angle = atan2(target_vector.x, target_vector.z)
 
-	var fwd_mps = transform.basis.x.x
-	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
-	steer_target *= STEER_LIMIT
-	if Input.is_action_pressed("ui_down"):
-	# Increase engine force at low speeds to make the initial acceleration faster.
+	var forward = global_transform.basis.z
+	var car_global_angle = atan2(forward.x, forward.z)
+	
+	var relative_angle = wrapf(target_angle - car_global_angle, -PI, PI)
+	if (steer_target-position).length() < 1:
+		relative_angle = 0
 
-		if speed < 20 and speed != 0:
-			engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
-		else:
-			engine_force = engine_force_value
+	var new_steering = relative_angle / 4
+	if abs(new_steering) > PI/3:
+		new_steering = sign(new_steering) * PI / 3
+	steering = new_steering
+	
+	if abs(relative_angle) > PI/12:
+		set_engine_force(engine_force_value*0.3)
+	elif abs(relative_angle) > PI/18:
+		set_engine_force(engine_force_value*0.8)
 	else:
-		engine_force = 0
-	if Input.is_action_pressed("ui_up"):
-		# Increase engine force at low speeds to make the initial acceleration faster.
-		if fwd_mps >= -1:
-			if speed < 30 and speed != 0:
-				engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
-			else:
-				engine_force = -engine_force_value
-		else:
-			brake = 1
-	else:
-		brake = 0.0
-		
-	if Input.is_action_pressed("ui_select"):
-		brake=3
-		$wheal2.wheel_friction_slip=0.8
-		$wheal3.wheel_friction_slip=0.8
-	else:
-		$wheal2.wheel_friction_slip=3
-		$wheal3.wheel_friction_slip=3
-	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
+		set_engine_force(engine_force_value)
 
-
-
-func traction(speed):
-	apply_central_force(Vector3.DOWN*speed)
-
-
-
-
+	#print("position " + str(position))
+	#print("destination " + str(patrol_points[patrol_index]))
+	#print("target vector "+str(target_vector) + " relative to car")
+	#print("car velocity " + str(linear_velocity) + " length " + str(linear_velocity.length()) + " engine force "+str(engine_force))
+	#print("steering " + str(steering))
+	#print("target angle " + str(target_angle))
+	#print("car angle "+str(car_global_angle))
+	#print("target (relative) angle: "+str(relative_angle))
+	#print("angular velocity: "+str(angular_velocity.y))
