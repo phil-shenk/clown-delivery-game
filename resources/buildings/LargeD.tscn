@@ -171,5 +171,6 @@ script = SubResource("GDScript_h3qqf")
 shape = SubResource("ConcavePolygonShape3D_sh3aj")
 
 [node name="building" type="MeshInstance3D" parent="StaticBody3D"]
+gi_mode = 2
 mesh = SubResource("ArrayMesh_x5oan")
 skeleton = NodePath("")
