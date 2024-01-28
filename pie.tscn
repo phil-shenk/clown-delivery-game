@@ -16,3 +16,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0777283, 0)
 shape = SubResource("BoxShape3D_k7i38")
 
 [node name="pie_model" parent="RigidBody3D" instance=ExtResource("1_j8nbm")]
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]

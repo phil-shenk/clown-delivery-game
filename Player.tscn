@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctxowu5v084oc"]
+[gd_scene load_steps=16 format=3 uid="uid://dhtngxob8q6d5"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_fyubx"]
-[ext_resource type="PackedScene" uid="uid://dptiqqb2lqxoc" path="res://clown.tscn" id="2_6l0b1"]
+[ext_resource type="PackedScene" uid="uid://dsf2d8la6awnm" path="res://clown.tscn" id="2_6l0b1"]
 [ext_resource type="Script" path="res://materials/leg_r.gd" id="3_qbflc"]
 [ext_resource type="Material" uid="uid://drq560wua55wb" path="res://materials/clown_pants_mat.tres" id="4_knkb6"]
 [ext_resource type="Script" path="res://leg_l.gd" id="5_i2wh6"]
