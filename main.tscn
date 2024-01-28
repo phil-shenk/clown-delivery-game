@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=30 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -8,9 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cm5dwgohsfp8o" path="res://Baltmore.tscn" id="2_ytgp1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
-[ext_resource type="PackedScene" uid="uid://dptiqqb2lqxoc" path="res://clown.tscn" id="7_boc7u"]
+[ext_resource type="PackedScene" uid="uid://dsf2d8la6awnm" path="res://clown.tscn" id="7_boc7u"]
 [ext_resource type="Script" path="res://materials/leg_r.gd" id="8_46xvn"]
-
 [ext_resource type="PackedScene" uid="uid://di05k8ionf1is" path="res://unicycle_resources/unicycle_top.tscn" id="8_mqe6g"]
 [ext_resource type="Material" uid="uid://drq560wua55wb" path="res://materials/clown_pants_mat.tres" id="9_0l0gh"]
 [ext_resource type="PackedScene" uid="uid://b2jp5gisoad1m" path="res://unicycle_resources/unicycle_bottom.tscn" id="9_37aaf"]
@@ -19,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://d00p1iiqcrmvq" path="res://unicycle_resources/clown_shoe.tscn" id="13_dww0d"]
 [ext_resource type="Script" path="res://unicycle_resources/pedal_r.gd" id="13_x7fme"]
 [ext_resource type="Script" path="res://unicycle_resources/pedal_l.gd" id="16_dn2f1"]
+[ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
+[ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -193,3 +194,7 @@ light_color = Color(1, 0.941176, 0.85098, 1)
 [node name="ThrowForceBar" type="Polygon2D" parent="UICanvasLayer"]
 color = Color(0.45098, 1, 0.462745, 1)
 polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
+
+[node name="Barbarian" parent="." instance=ExtResource("22_xtpsq")]
+transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -2.027, 0.619, 14.1049)
+script = ExtResource("23_ykm5e")
