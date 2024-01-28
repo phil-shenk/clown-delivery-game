@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
-[ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="PackedScene" uid="uid://cm5dwgohsfp8o" path="res://Baltmore.tscn" id="2_ytgp1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" path="res://unicycle_resources/pedal_l.gd" id="16_dn2f1"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
+[ext_resource type="PackedScene" uid="uid://ctxowu5v084oc" path="res://player.tscn" id="7_th2hm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -33,13 +33,13 @@ albedo_texture = ExtResource("1_8yqv2")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7nqyd"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jgrsl"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1bws"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_3umdx"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_jndq3"]
+[sub_resource type="Curve3D" id="Curve3D_8rk5r"]
+bake_interval = 11.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, -0.293, 0.5, 42.642, 0, 0, 0, 0, 0, 0, 6.59285, 4.09248, 60.3527, 0, 0, 0, 0, 0, 0, 33.534, 0.5, 65.058, 0, 0, 0, 0, 0, 0, 52.72, 0.5, 65.696, 0, 0, 0, 0, 0, 0, 79.0447, 2.67993, 61.7044, 0, 0, 0, 0, 0, 0, 79.497, 0.5, 43.857, 0, 0, 0, 0, 0, 0, 80.658, 0.5, 3.737),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
@@ -49,9 +49,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326422, -99.424)
 
 [node name="car" parent="." instance=ExtResource("2_xdqm1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60564, 0.747386, -3.94381)
+mass = 100.0
+center_of_mass = Vector3(0, 0, 0)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(18.825, 0, 0, 0, 0.36, 0, 0, 0, 16.865, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_b0pe1")
@@ -82,103 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="ControllableCamera" parent="CamRoot" groups=["camera"] instance=ExtResource("3_f58ys")]
 
-[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-collision_layer = 2
-script = ExtResource("2_7buf4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_jgrsl")
-
-[node name="MeshModel" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520238, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel"]
-visible = false
-mesh = SubResource("CapsuleMesh_n1bws")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel"]
-transform = Transform3D(0.256082, 0, 0, 0, -1.81402e-08, -0.0728386, 0, 0.415, -3.18387e-09, 0, 0, 1.02901)
-mesh = SubResource("PrismMesh_3umdx")
-
-[node name="clown" parent="Player/MeshModel" instance=ExtResource("7_boc7u")]
-transform = Transform3D(-0.31, 0, -2.71011e-08, 0, 0.31, 0, 2.71011e-08, 0, -0.31, 0, 0.935, 0)
-
-[node name="r_base_leg" type="Node3D" parent="Player/MeshModel"]
-transform = Transform3D(1, 0, 0, 0, 0.00375259, 0.999993, 0, -0.999993, 0.00375259, -0.246951, -0.0193467, -0.0188651)
-script = ExtResource("8_46xvn")
-
-[node name="r_leg" type="Node3D" parent="Player/MeshModel/r_base_leg"]
-transform = Transform3D(1, 0, 0, 0, 0.00544394, -0.99999, 0, 1.23776, 0.00439817, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg"]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
-material_override = ExtResource("9_0l0gh")
-mesh = SubResource("CapsuleMesh_jndq3")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg"]
-transform = Transform3D(0.256082, 0, 0, 0, -1.81462e-08, -0.0728387, 0, 0.415, -3.19415e-09, 0, -0.196583, 0.404971)
-visible = false
-mesh = SubResource("PrismMesh_3umdx")
-
-[node name="r_leg2" type="Node3D" parent="Player/MeshModel/r_base_leg/r_leg" groups=["leg2s"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.365083, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg/r_leg2"]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
-material_override = ExtResource("9_0l0gh")
-mesh = SubResource("CapsuleMesh_jndq3")
-
-[node name="l_base_leg" type="Node3D" parent="Player/MeshModel"]
-transform = Transform3D(1, 0, 0, 0, 0.00375259, 0.999993, 0, -0.999993, 0.00375259, 0.283644, -0.0193467, -0.0188651)
-script = ExtResource("10_7qwlo")
-
-[node name="l_leg" type="Node3D" parent="Player/MeshModel/l_base_leg"]
-transform = Transform3D(1, 0, 0, 0, 0.00544394, -0.99999, 0, 1.23776, 0.00439817, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg"]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
-material_override = ExtResource("9_0l0gh")
-mesh = SubResource("CapsuleMesh_jndq3")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg"]
-transform = Transform3D(0.256082, 0, 0, 0, -1.81462e-08, -0.0728387, 0, 0.415, -3.19415e-09, 0, -0.196583, 0.404971)
-visible = false
-mesh = SubResource("PrismMesh_3umdx")
-
-[node name="l_leg2" type="Node3D" parent="Player/MeshModel/l_base_leg/l_leg" groups=["leg2s"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.365083, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg/l_leg2"]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
-material_override = ExtResource("9_0l0gh")
-mesh = SubResource("CapsuleMesh_jndq3")
-
-[node name="unicycle_stuff" type="Node3D" parent="Player/MeshModel"]
-
-[node name="unicycle_top" parent="Player/MeshModel/unicycle_stuff" instance=ExtResource("8_mqe6g")]
-transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.21, 0)
-
-[node name="unicycle_bottom" parent="Player/MeshModel/unicycle_stuff" instance=ExtResource("9_37aaf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.04684, 0)
-
-[node name="pedals" type="Node3D" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00397301, 0)
-
-[node name="r_pedal" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals" groups=["pedals"] instance=ExtResource("12_poexr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13404, -0.83003, -0.0123778)
-script = ExtResource("13_x7fme")
-
-[node name="clown_shoe" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals/r_pedal" instance=ExtResource("13_dww0d")]
-transform = Transform3D(-1.51, 0, 2.28004e-07, 0, 1.51, 0, -2.28004e-07, 0, -1.51, -0.00681663, 0.369667, 0.445873)
-
-[node name="l_pedal" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals" groups=["pedals"] instance=ExtResource("12_poexr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14251, 0.795852, -0.0195757)
-script = ExtResource("16_dn2f1")
-
-[node name="clown_shoe" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals/l_pedal" instance=ExtResource("13_dww0d")]
-transform = Transform3D(-1.51, 0, 2.28004e-07, 0, 1.51, 0, -2.28004e-07, 0, -1.51, 0.248412, 0.369667, 0.445873)
+[node name="Player" parent="." instance=ExtResource("7_th2hm")]
 
 [node name="BillboardThing" type="Sprite3D" parent="."]
 transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
@@ -188,6 +94,9 @@ texture = ExtResource("3_ew4sl")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79673, 0.604335, 0, -0.604335, 0.79673, 0, 4.02602, 0)
 light_color = Color(1, 0.941176, 0.85098, 1)
+
+[node name="CarPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8rk5r")
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
