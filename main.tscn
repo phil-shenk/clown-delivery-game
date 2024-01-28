@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cm5dwgohsfp8o" path="res://Baltmore.tscn" id="2_ytgp1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="PackedScene" uid="uid://c5s6fuk22sct6" path="res://ragdoll_guy.tscn" id="9_xy3vy"]
 [ext_resource type="PackedScene" uid="uid://dhtngxob8q6d5" path="res://Player.tscn" id="7_th2hm"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
@@ -93,6 +94,9 @@ curve = SubResource("Curve3D_8rk5r")
 [node name="ThrowForceBar" type="Polygon2D" parent="UICanvasLayer"]
 color = Color(0.45098, 1, 0.462745, 1)
 polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
+
+[node name="ragdoll_guy" parent="." instance=ExtResource("9_xy3vy")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.56267, 0, -5.29046)
 
 [node name="Barbarian" parent="." instance=ExtResource("22_xtpsq")]
 transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -2.027, 0.619, 14.1049)
