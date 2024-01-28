@@ -1,8 +1,8 @@
 [gd_scene load_steps=34 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
-[ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
+[ext_resource type="Script" path="res://Level.gd" id="1_xd6v3"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="PackedScene" uid="uid://cm5dwgohsfp8o" path="res://Baltmore.tscn" id="2_ytgp1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
@@ -24,7 +24,13 @@
 [ext_resource type="PackedScene" path="res://resources/buildings/SmallF.tscn" id="22_o73l6"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
+<<<<<<< Updated upstream
 [ext_resource type="Material" uid="uid://cfjrlls5ay6s" path="res://new_procedural_sky_material.tres" id="25_sgb85"]
+=======
+[ext_resource type="PackedScene" uid="uid://ba8jp66w27yob" path="res://world_environment.tscn" id="25_u8am2"]
+[ext_resource type="AudioStream" uid="uid://cbon5t3qi4qv7" path="res://honkp1.wav" id="26_1pqu3"]
+[ext_resource type="AudioStream" uid="uid://b1w62hkd8dduh" path="res://honkp2.wav" id="27_nbpf3"]
+>>>>>>> Stashed changes
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -61,7 +67,7 @@ ssao_radius = 2.7
 ssil_enabled = true
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_drvo6")
+script = ExtResource("1_xd6v3")
 
 [node name="Baltimore" parent="." instance=ExtResource("2_ytgp1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326422, -7.507)
@@ -215,6 +221,14 @@ script = ExtResource("23_ykm5e")
 transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, 37.968, 0.597, -5.14625)
 script = ExtResource("23_ykm5e")
 
+<<<<<<< Updated upstream
 [node name="CarPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 curve = SubResource("Curve3D_8rk5r")
+=======
+[node name="honk_sound1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("26_1pqu3")
+
+[node name="honk_sound2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("27_nbpf3")
+>>>>>>> Stashed changes
