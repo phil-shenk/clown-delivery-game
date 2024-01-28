@@ -31,6 +31,8 @@ var rotation_amount: float = 0
 @export var turn_speed: float = 20
 var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
+var pedal_strength: float = 1
+var pedal_decay: float = 2.5
 
 func _ready():
 	if _is_capturing:
@@ -43,6 +45,14 @@ func _ready():
 func _input(event):
 	# focus on pie-throwing
 	camera.isAiming = Input.is_action_pressed("aim_pie")
+	
+	# reset the pedal motions
+	if Input.is_action_just_pressed("ui_left"):
+		print("pushing left pedal")
+		input_x_turn_delay = -1.0*pedal_strength
+	if Input.is_action_just_pressed("ui_right"):
+		print("pushing right pedal")
+		input_x_turn_delay = pedal_strength
 	
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
@@ -151,7 +161,13 @@ func set_new_velocity(delta):
 	var prev_velocity = velocity
 	prev_velocity.y = 0
 	
-	input_x_turn_delay = lerpf(input_x_turn_delay, input_dir.x, turn_speed * delta)
+	#input_x_turn_delay = lerpf(input_x_turn_delay, input_dir.x, turn_speed * delta)
+	
+	### FINITE PEDAL AMOUNTS
+	# start input_x_turn_delay at a const when pressed, lerp to 0
+	# (i'll do that in _input() when it's just pressed)
+	input_x_turn_delay = lerpf(input_x_turn_delay, 0, pedal_decay * delta)
+
 	
 	rotation_amount = -input_x_turn_delay
 	
