@@ -32,6 +32,8 @@ var rotation_amount: float = 0
 var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
 
+@onready var unicycle_wheel: Node3D = $MeshModel/unicycle_stuff/unicycle_bottom
+
 
 func _input(event):
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
@@ -88,7 +90,7 @@ func _physics_process(delta):
 	set_new_velocity(delta)
 	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.z)
 	
-	print("velocity: " + str(velocity))
+	#print("velocity: " + str(velocity))
 	
 	move_and_slide()
 	
@@ -125,7 +127,7 @@ func set_new_velocity(delta):
 	var aim = get_global_transform().basis;
 	new_velocity = aim.z * new_forward_speed
 	
-	
+	unicycle_wheel.rotate_object_local(Vector3(1, 0, 0), new_forward_speed * 0.1)
 	
 
 	#forward_velocity = forward_velocity.normalized() * (forward_velocity.length() + abs(direction.x * pedal_speed_added) - total_drag)

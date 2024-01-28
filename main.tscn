@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=27 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -8,8 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 [ext_resource type="PackedScene" uid="uid://dptiqqb2lqxoc" path="res://clown.tscn" id="7_boc7u"]
+[ext_resource type="Script" path="res://materials/leg_r.gd" id="8_46xvn"]
 [ext_resource type="PackedScene" uid="uid://di05k8ionf1is" path="res://unicycle_resources/unicycle_top.tscn" id="8_mqe6g"]
+[ext_resource type="Material" uid="uid://drq560wua55wb" path="res://materials/clown_pants_mat.tres" id="9_0l0gh"]
 [ext_resource type="PackedScene" uid="uid://b2jp5gisoad1m" path="res://unicycle_resources/unicycle_bottom.tscn" id="9_37aaf"]
+[ext_resource type="Script" path="res://leg_l.gd" id="10_7qwlo"]
+[ext_resource type="PackedScene" uid="uid://joqi5fkql2ib" path="res://unicycle_resources/pedal.tscn" id="12_poexr"]
+[ext_resource type="PackedScene" uid="uid://d00p1iiqcrmvq" path="res://unicycle_resources/clown_shoe.tscn" id="13_dww0d"]
+[ext_resource type="Script" path="res://unicycle_resources/pedal_r.gd" id="13_x7fme"]
+[ext_resource type="Script" path="res://unicycle_resources/pedal_l.gd" id="16_dn2f1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -92,11 +99,54 @@ mesh = SubResource("PrismMesh_3umdx")
 [node name="clown" parent="Player/MeshModel" instance=ExtResource("7_boc7u")]
 transform = Transform3D(-0.31, 0, -2.71011e-08, 0, 0.31, 0, 2.71011e-08, 0, -0.31, 0, 0.935, 0)
 
-[node name="r_leg" type="Node3D" parent="Player/MeshModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214585, -0.304275, 0)
+[node name="r_base_leg" type="Node3D" parent="Player/MeshModel"]
+transform = Transform3D(1, 0, 0, 0, 0.00375259, 0.999993, 0, -0.999993, 0.00375259, -0.246951, -0.0193467, -0.0188651)
+script = ExtResource("8_46xvn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_leg"]
-transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0, 0)
+[node name="r_leg" type="Node3D" parent="Player/MeshModel/r_base_leg"]
+transform = Transform3D(1, 0, 0, 0, 0.00544394, -0.99999, 0, 1.23776, 0.00439817, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg"]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
+material_override = ExtResource("9_0l0gh")
+mesh = SubResource("CapsuleMesh_jndq3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg"]
+transform = Transform3D(0.256082, 0, 0, 0, -1.81462e-08, -0.0728387, 0, 0.415, -3.19415e-09, 0, -0.196583, 0.404971)
+visible = false
+mesh = SubResource("PrismMesh_3umdx")
+
+[node name="r_leg2" type="Node3D" parent="Player/MeshModel/r_base_leg/r_leg" groups=["leg2s"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.365083, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/r_base_leg/r_leg/r_leg2"]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
+material_override = ExtResource("9_0l0gh")
+mesh = SubResource("CapsuleMesh_jndq3")
+
+[node name="l_base_leg" type="Node3D" parent="Player/MeshModel"]
+transform = Transform3D(1, 0, 0, 0, 0.00375259, 0.999993, 0, -0.999993, 0.00375259, 0.283644, -0.0193467, -0.0188651)
+script = ExtResource("10_7qwlo")
+
+[node name="l_leg" type="Node3D" parent="Player/MeshModel/l_base_leg"]
+transform = Transform3D(1, 0, 0, 0, 0.00544394, -0.99999, 0, 1.23776, 0.00439817, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg"]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
+material_override = ExtResource("9_0l0gh")
+mesh = SubResource("CapsuleMesh_jndq3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg"]
+transform = Transform3D(0.256082, 0, 0, 0, -1.81462e-08, -0.0728387, 0, 0.415, -3.19415e-09, 0, -0.196583, 0.404971)
+visible = false
+mesh = SubResource("PrismMesh_3umdx")
+
+[node name="l_leg2" type="Node3D" parent="Player/MeshModel/l_base_leg/l_leg" groups=["leg2s"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.365083, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshModel/l_base_leg/l_leg/l_leg2"]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.214378, 0)
+material_override = ExtResource("9_0l0gh")
 mesh = SubResource("CapsuleMesh_jndq3")
 
 [node name="unicycle_stuff" type="Node3D" parent="Player/MeshModel"]
@@ -105,7 +155,24 @@ mesh = SubResource("CapsuleMesh_jndq3")
 transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, -0.21, 0)
 
 [node name="unicycle_bottom" parent="Player/MeshModel/unicycle_stuff" instance=ExtResource("9_37aaf")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.21, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.04684, 0)
+
+[node name="pedals" type="Node3D" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00397301, 0)
+
+[node name="r_pedal" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals" groups=["pedals"] instance=ExtResource("12_poexr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13404, -0.83003, -0.0123778)
+script = ExtResource("13_x7fme")
+
+[node name="clown_shoe" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals/r_pedal" instance=ExtResource("13_dww0d")]
+transform = Transform3D(-1.51, 0, 2.28004e-07, 0, 1.51, 0, -2.28004e-07, 0, -1.51, -0.00681663, 0.369667, 0.445873)
+
+[node name="l_pedal" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals" groups=["pedals"] instance=ExtResource("12_poexr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14251, 0.795852, -0.0195757)
+script = ExtResource("16_dn2f1")
+
+[node name="clown_shoe" parent="Player/MeshModel/unicycle_stuff/unicycle_bottom/pedals/l_pedal" instance=ExtResource("13_dww0d")]
+transform = Transform3D(-1.51, 0, 2.28004e-07, 0, 1.51, 0, -2.28004e-07, 0, -1.51, 0.248412, 0.369667, 0.445873)
 
 [node name="BillboardThing" type="Sprite3D" parent="."]
 transform = Transform3D(3.86, 0, 0, 0, 3.86, 0, 0, 0, 3.86, 4.15288, 1.26993, -3.47154)
