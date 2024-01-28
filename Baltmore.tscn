@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://cm5dwgohsfp8o"]
 
-[ext_resource type="Texture2D" uid="uid://cdw57y2cqvwlk" path="res://resources/road_texture.png" id="1_x4lyg"]
+[ext_resource type="Texture2D" uid="uid://b7i3ftsd2pgoo" path="res://resources/city_blocks.png" id="1_qj1jt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prtdn"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og20l"]
-albedo_texture = ExtResource("1_x4lyg")
+albedo_texture = ExtResource("1_qj1jt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m8rpt"]
 material = SubResource("StandardMaterial3D_og20l")
-size = Vector2(100, 100)
+size = Vector2(256, 256)
 
 [node name="Baltimore" type="Node3D"]
 
