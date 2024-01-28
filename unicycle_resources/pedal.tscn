@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://joqi5fkql2ib"]
+
+[ext_resource type="PackedScene" uid="uid://d2hidf0h1way4" path="res://unicycle_resources/pedal.glb" id="1_to458"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2u0g"]
+albedo_color = Color(0.231373, 0.164706, 0.12549, 1)
+
+[node name="pedal" instance=ExtResource("1_to458")]
+
+[node name="pedal" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0.00210905, -0.0022842, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_y2u0g")

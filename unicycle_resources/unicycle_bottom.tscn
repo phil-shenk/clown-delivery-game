@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2jp5gisoad1m"]
+
+[ext_resource type="PackedScene" uid="uid://bedxrqe3nujcs" path="res://unicycle_resources/unicycle_bottom.glb" id="1_j67m8"]
+[ext_resource type="Material" uid="uid://cp6wkd0irq4fv" path="res://materials/metal_mat.tres" id="2_8uftv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcqts"]
+albedo_color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="unicycle_bottom" instance=ExtResource("1_j67m8")]
+
+[node name="tire_outside" parent="." index="0"]
+transform = Transform3D(0, 0.876494, 0, -1.27459, 0, 0, 0, 0, 1.27459, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_fcqts")
+
+[node name="axle" parent="." index="1"]
+transform = Transform3D(0, 0.54773, 0, -1.27459, 0, 0, 0, 0, 1.27459, 0, 0, 0)
+material_override = ExtResource("2_8uftv")
+
+[node name="tire_inside" parent="." index="2"]
+transform = Transform3D(0, 0.876494, 0, -1.27459, 0, 0, 0, 0, 1.27459, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_8uftv")
