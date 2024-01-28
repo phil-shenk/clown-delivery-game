@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=35 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -47,14 +47,27 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Curve3D" id="Curve3D_6s85f"]
+bake_interval = 11.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.471, 0.276497, -123.058, 0, 0, 0, 0, 0, 0, -0.487343, 0.00735474, -123.767, 0, 0, 0, 0, 0, 0, 8.20191, -0.875675, -108.221, 0, 0, 0, 0, 0, 0, 9.67387, -0.0184898, -42.3547, 0, 0, 0, 0, 0, 0, 1.565, 0, -34.3, 0, 0, 0, 0, 0, 0, -60.142, 0, -35.267, 0, 0, 0, 0, 0, 0, -72.5116, -0.0120239, -48.5318, 0, 0, 0, 0, 0, 0, -70.586, 0, -110.266),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_drvo6")
 
 [node name="Baltimore" parent="." instance=ExtResource("2_ytgp1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326422, -7.507)
 
-[node name="car" parent="." instance=ExtResource("2_xdqm1")]
+[node name="Car1" parent="." instance=ExtResource("2_xdqm1")]
 transform = Transform3D(0.0220242, 0, 0.999757, 0, 1, 0, -0.999757, 0, 0.0220242, 9.66005, 0.747386, 7.11056)
+mass = 100.0
+center_of_mass = Vector3(0, 0, 0)
+
+[node name="Car2" parent="." instance=ExtResource("2_xdqm1")]
+transform = Transform3D(0.0220242, 0, 0.999757, 0, 1, 0, -0.999757, 0, 0.0220242, -68.8663, 0.747386, -122.432)
 mass = 100.0
 center_of_mass = Vector3(0, 0, 0)
 
@@ -203,7 +216,7 @@ transform = Transform3D(-0.999987, 0, -0.00513135, 0, 1, 0, 0.00513135, 0, -0.99
 transform = Transform3D(0.0165973, 0, 0.999862, 0, 1, 0, -0.999862, 0, 0.0165973, -0.891495, 0.326426, -3.31823)
 
 [node name="LargeF" parent="." instance=ExtResource("15_g21jq")]
-transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, -61.7391, 0.326422, -50.2332)
+transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, -59.8766, 0.326422, -54.7138)
 
 [node name="LargeF7" parent="." instance=ExtResource("15_g21jq")]
 transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, 17.9319, 0.326422, -62.365)
@@ -270,6 +283,10 @@ script = ExtResource("23_ykm5e")
 transform = Transform3D(-0.147809, 0, -0.989016, 0, 1, 0, 0.989016, 0, -0.147809, 37.968, 0.597, -5.14625)
 script = ExtResource("23_ykm5e")
 
-[node name="CarPath" type="Path3D" parent="."]
+[node name="CarPathCar1" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 curve = SubResource("Curve3D_8rk5r")
+
+[node name="CarPathCar2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
+curve = SubResource("Curve3D_6s85f")
