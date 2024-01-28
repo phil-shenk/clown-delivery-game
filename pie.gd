@@ -22,3 +22,5 @@ func addImpulse(impulse):
 func _on_rigid_body_3d_body_entered(body: Node3D):
 	if body.name == "TargetRigidBody3D":
 		body.get_parent().get_hit()
+	elif body.get_parent().has_method("get_hit"):
+		body.get_parent().get_hit()

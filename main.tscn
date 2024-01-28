@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=34 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -9,20 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://dhtngxob8q6d5" path="res://Player.tscn" id="7_th2hm"]
 [ext_resource type="Texture2D" uid="uid://bnm4asbb4ofol" path="res://resources/welcome_to_baltimore.png" id="8_bmjqd"]
 [ext_resource type="Texture2D" uid="uid://42401apiefhy" path="res://resources/Steamboat_Willie_1928_Poster.png" id="9_ibprh"]
-[ext_resource type="PackedScene" uid="uid://c5s6fuk22sct6" path="res://ragdoll_guy.tscn" id="9_xy3vy"]
-[ext_resource type="PackedScene" uid="uid://buaty8p3d47f6" path="res://resources/buildings/LargeA.tscn" id="11_gxh2p"]
-[ext_resource type="PackedScene" uid="uid://g5y2u7tchyh0" path="res://resources/buildings/LargeB.tscn" id="11_r28lg"]
-[ext_resource type="PackedScene" uid="uid://b8v0mfn12ie5j" path="res://resources/buildings/LargeC.tscn" id="12_kf6df"]
-[ext_resource type="PackedScene" uid="uid://b63h75mq05k17" path="res://resources/buildings/LargeD.tscn" id="13_c1c10"]
-[ext_resource type="PackedScene" uid="uid://b0w8pb2wu4hh" path="res://resources/buildings/LargeE.tscn" id="14_dxf72"]
-[ext_resource type="PackedScene" uid="uid://0dq7m5nu7kkj" path="res://resources/buildings/LargeF.tscn" id="15_g21jq"]
-[ext_resource type="PackedScene" uid="uid://d20qi6vr35ud0" path="res://resources/buildings/LargeG.tscn" id="16_l48at"]
-[ext_resource type="PackedScene" uid="uid://1sfj56oqmxh5" path="res://resources/buildings/SmallA.tscn" id="17_rkk7b"]
-[ext_resource type="PackedScene" uid="uid://iemxwti0p801" path="res://resources/buildings/SmallB.tscn" id="18_i7l1u"]
-[ext_resource type="PackedScene" uid="uid://q2i8cls047ci" path="res://resources/buildings/SmallC.tscn" id="19_6m4m4"]
-[ext_resource type="PackedScene" uid="uid://ceesysi74507w" path="res://resources/buildings/SmallD.tscn" id="20_unfm8"]
-[ext_resource type="PackedScene" uid="uid://cfwh2bnp47p13" path="res://resources/buildings/SmallE.tscn" id="21_nl13m"]
-[ext_resource type="PackedScene" uid="uid://bwi5xt6xjy2dc" path="res://resources/buildings/SmallF.tscn" id="22_o73l6"]
+[ext_resource type="PackedScene" uid="uid://dcs7wewcg8x40" path="res://ragdoll_guy.tscn" id="9_xy3vy"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeA.tscn" id="11_gxh2p"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeB.tscn" id="11_r28lg"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeC.tscn" id="12_kf6df"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeD.tscn" id="13_c1c10"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeE.tscn" id="14_dxf72"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeF.tscn" id="15_g21jq"]
+[ext_resource type="PackedScene" path="res://resources/buildings/LargeG.tscn" id="16_l48at"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallA.tscn" id="17_rkk7b"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallB.tscn" id="18_i7l1u"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallC.tscn" id="19_6m4m4"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallD.tscn" id="20_unfm8"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallE.tscn" id="21_nl13m"]
+[ext_resource type="PackedScene" path="res://resources/buildings/SmallF.tscn" id="22_o73l6"]
 [ext_resource type="PackedScene" uid="uid://niweq1oe4tk2" path="res://barbarian.tscn" id="22_xtpsq"]
 [ext_resource type="Script" path="res://barbarian.gd" id="23_ykm5e"]
 [ext_resource type="PackedScene" path="res://world_environment.tscn" id="25_u8am2"]
@@ -267,7 +267,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.3867, 0.180003, -44.1527)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1611, 0.32642, -43.1174)
 
 [node name="ragdoll_guy" parent="." instance=ExtResource("9_xy3vy")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.52639, 0, -11.6565)
+transform = Transform3D(-0.49426, 0, -0.0755442, 0, 0.5, 0, 0.0755442, 0, -0.49426, 82.7546, 0, -89.2924)
 
 [node name="Barbarian" parent="." instance=ExtResource("22_xtpsq")]
 transform = Transform3D(-0.999992, 0, -0.00394454, 0, 1, 0, 0.00394454, 0, -0.999992, -37.1554, 0.619, -43.6653)
