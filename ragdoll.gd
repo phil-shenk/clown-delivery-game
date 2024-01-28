@@ -17,7 +17,8 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	print(rb.get_colliding_bodies().size())
+	pass
+	#print(rb.get_colliding_bodies().size())
 
 #func _on_body_entered(body:Node):
 	#physical_bones_start_simulation()
