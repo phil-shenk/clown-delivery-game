@@ -34,6 +34,10 @@ var input_x_turn_delay: float = 0
 
 
 func _input(event):
+	
+	# focus on pie-throwing
+	camera.isAiming = Input.is_action_pressed("aim_pie")
+	
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
 	if Input.is_action_just_pressed("ui_cancel"):

@@ -4,6 +4,7 @@
 
 [node name="ControllableCamera" type="Node3D"]
 script = ExtResource("1_kg02k")
+aim_speed = 10.0
 
 [node name="GimbalH" type="Node3D" parent="."]
 

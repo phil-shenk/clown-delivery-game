@@ -1,6 +1,10 @@
 # clown-delivery-game
 Clown Delivery Game for PIGDA 2024
 
+Minimum Viable Product
+- throw pies properly
+- hit things w/ pies
+- have things to hit
 
 ideas:
   - *clown* gang

@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=16 format=3 uid="uid://dbkmv7mjkj7tu"]
 
-[ext_resource type="Texture2D" path="res://coordinateplane.png" id="1_8yqv2"]
+[ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
 [ext_resource type="Script" path="res://Ball.gd" id="1_sqgk5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_7buf4"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_xdqm1"]
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
-[ext_resource type="PackedScene" path="res://ControllableCamera.tscn" id="3_f58ys"]
+[ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -68,6 +68,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
 script = ExtResource("2_7buf4")
+speed = null
+jump_velocity = null
+pedal_speed_added = null
+forward_drag = null
+side_move_reduce_coeff = null
+acceleration = null
+cam_follow_speed = null
+rotation_amount_coeff = null
+turn_speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_jgrsl")

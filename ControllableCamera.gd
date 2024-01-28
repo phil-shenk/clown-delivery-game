@@ -24,6 +24,12 @@ var _rot_h: float = 0
 var _rot_v: float = 0
 var _distance: float = 0
 
+# slide along aim_vector
+@export var isAiming = false
+@export var aim_speed: float = 10
+@export var aim_vector: Vector3 = Vector3(0,1,0)
+var camera_offset = Vector3(0,0,0)
+
 func _ready():
 	# wait until the parent node is ready
 	await get_parent().ready
@@ -51,7 +57,13 @@ func _process(delta):
 	_distance = _zoom_scale * (max_distance - min_distance) + min_distance
 
 func _physics_process(delta):
-	get_parent_node_3d().position = _player.position
+	
+	if (isAiming):
+		camera_offset = lerp(camera_offset, aim_vector, aim_speed * delta)
+	else:
+		camera_offset = lerp(camera_offset, Vector3(0,0,0), aim_speed * delta)
+	
+	get_parent_node_3d().position = _player.position + camera_offset
 	
 	# lerp the the horizontal and vertical gimbals' rotations towards the corresponding rotation angles
 	# note that we're using lerp instead of lerp_angle because the latter tries to determine the rotation
@@ -62,5 +74,9 @@ func _physics_process(delta):
 
 	# lerp the camera's current local Z position towards the distance variable as determined by the
 	# controls node's zoom scale value in the _process method
+	if(isAiming):
+		_distance *= 0.25
+		Vector3(0,0,1)
+		
 	_camera.transform.origin.z = lerpf(_camera.transform.origin.z, _distance, zoom_speed * delta)
 
