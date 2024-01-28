@@ -5,6 +5,7 @@ class_name Level
 var pie_scene = preload("res://pie.tscn")
 var pie_count = 0
 var throw_force = 0.0
+var targets_hit = 0
 const min_throw_force = 5.0
 const max_throw_force = 100.0
 const throw_force_scaling = 10.0
@@ -49,7 +50,7 @@ func _process(delta):
 	if(Input.is_action_pressed("throw_pie")):
 		throw_force += throw_force_scaling*delta
 		throw_force = clampf(throw_force, min_throw_force, max_throw_force)
-		print(throw_force)
+		#print(throw_force)
 		
 		forceBar.polygon[1].x = throw_force * 10.0 + 5.0
 		forceBar.polygon[2].x = throw_force * 10.0 + 5.0
@@ -87,7 +88,7 @@ func _process(delta):
 	if(Input.is_action_just_released("throw_pie")):
 		# reset throw force, and throw it
 		throwFood()
-		print(throw_force)
+		#print(throw_force)
 		throw_force = 0.0
 		forceBar.polygon[1].x = throw_force * 10.0 + 10.0
 		forceBar.polygon[2].x = throw_force * 10.0 + 10.0
@@ -95,11 +96,16 @@ func _process(delta):
 		# clear path3d data (or just hide it)
 		aimPathPolygon.set_visible(false)
 
+	var new_targets_hit = count_targets_hit()
+	if new_targets_hit > targets_hit:
+		targets_hit = new_targets_hit
+		print("new target hit! count is now ", new_targets_hit)
+
 
 func throwFood():
 	var pie_instance : Pie = pie_scene.instantiate()
 	pie_count += 1
-	print(pie_count)
+	print("pies thrown: ", pie_count)
 	
 	pie_instance.position = player.position + Vector3(0,1.2,0)
 	
@@ -113,3 +119,12 @@ func getThrowDirection():
 	
 	#var player_direction = -player.global_transform.basis.z
 	return (camera_direction + Vector3(0,0.8,0)).normalized()
+
+
+func count_targets_hit() -> int:
+	var hit_count = 0
+	for child in get_children():
+		if child.has_node("TargetRigidBody3D"):
+			if child.was_hit:
+				hit_count += 1
+	return hit_count

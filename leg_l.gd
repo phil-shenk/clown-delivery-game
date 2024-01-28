@@ -58,7 +58,7 @@ func _process(delta):
 	var locA = (bSq + cSq - aSq) / (2 * b * c)
 	#var locC = acos((aSq + bSq - cSq) / (2 * a * b))
 	var locB = (cSq + aSq - bSq) / (2 * c * a)
-	print("locB1 " + str(locB))
+	#print("locB1 " + str(locB))
 	#my problem is that if locA or locB > 1.0 then we get NaN error from Acos
 	#so we need to flip the triangle logic accordingly
 	if absf(locA) > 1:
@@ -83,6 +83,6 @@ func _process(delta):
 	aN.rotation.x = acos(locA)
 	bN.rotation.x =  acos(locB) - PI*0.25
 	
-	print("cN.position " + str(cN.global_position))
-	print("locB2 " + str(locB))
+	#print("cN.position " + str(cN.global_position))
+	#print("locB2 " + str(locB))
 	

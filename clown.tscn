@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dptiqqb2lqxoc"]
+[gd_scene load_steps=15 format=3 uid="uid://dsf2d8la6awnm"]
 
 [ext_resource type="PackedScene" uid="uid://dr53jlbx0ggy4" path="res://clown.glb" id="1_wxk8y"]
 [ext_resource type="Material" uid="uid://dwu38h42175k0" path="res://materials/hair_mat.tres" id="2_aym1y"]
