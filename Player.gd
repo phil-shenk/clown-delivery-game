@@ -76,7 +76,34 @@ func _input(event):
 		# toss some food for good measure
 		var parentLevel : Level = get_parent()
 		parentLevel.throwFood()
+		
+	if Input.is_key_pressed(KEY_B):
+		teleport_to_baltimore()
 
+func teleport_to_baltimore():
+	#var child_node = get_node("path/to/child")
+	var tree = get_tree()
+	var camRoot = get_parent().get_node("CamRoot")
+	get_parent().remove_child(camRoot)
+	get_parent().remove_child(self)
+	print(camRoot)
+	print(camRoot)
+
+	
+	# Queue the current scene to free on the next frame:
+	#var root_node = get_tree().get_root()
+	#var scene_node = root_node.get_node("Level1")
+	#scene_node.queue_free()
+
+	# Load in some scene from our project files:
+	#var new_scene_resource = load("res://Levels/Level2.tscn") # Load the new level from disk
+	#var new_scene_node = new_scene_resource.instantiate() # Create an actual node of it for the game to use
+	#root_node.add_child(new_scene_node) # Add to the tree so the level starts processing
+	#get_node("path/to/new/parent").add_child(child_node)
+	tree.change_scene_to_file("res://Baltmore.tscn")
+	tree.current_scene.add_child(self)
+	tree.current_scene.add_child(camRoot)
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
