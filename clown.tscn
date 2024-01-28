@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://dptiqqb2lqxoc"]
+
+[ext_resource type="PackedScene" uid="uid://dr53jlbx0ggy4" path="res://clown.glb" id="1_wxk8y"]
+[ext_resource type="Material" uid="uid://dwu38h42175k0" path="res://hair_mat.tres" id="2_wat78"]
+[ext_resource type="Material" uid="uid://cxmltncninen4" path="res://hair_mat_2.tres" id="3_snvbs"]
+[ext_resource type="Material" uid="uid://dtpjsw02a2j3y" path="res://hair_mat_3.tres" id="4_wkd8b"]
+[ext_resource type="Material" uid="uid://jukowqxuidqy" path="res://hair_base.tres" id="5_tijsr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nkjh"]
+albedo_color = Color(1, 0.960784, 0.941176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlte6"]
+albedo_color = Color(1, 0.0509804, 0.223529, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ha1l4"]
+albedo_color = Color(0.631373, 0.4, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wi3u"]
+albedo_color = Color(1, 0.301961, 0.823529, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooued"]
+albedo_color = Color(1, 0, 0.109804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwtkw"]
+albedo_color = Color(1, 0.141176, 0.929412, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cbjl"]
+albedo_color = Color(1, 0.572549, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wr3s"]
+albedo_color = Color(1, 0.0509804, 0.192157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jeyd"]
+albedo_color = Color(0.231373, 0.564706, 1, 1)
+
+[node name="clown" instance=ExtResource("1_wxk8y")]
+
+[node name="head" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5nkjh")
+
+[node name="nose" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wlte6")
+
+[node name="eyes" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ha1l4")
+
+[node name="hat_a" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8wi3u")
+
+[node name="hat_b" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ooued")
+
+[node name="Torus" parent="." index="5"]
+visible = false
+
+[node name="mouth" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nwtkw")
+
+[node name="hair" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_wat78")
+
+[node name="hair_001" parent="." index="8"]
+material_override = ExtResource("3_snvbs")
+surface_material_override/0 = ExtResource("3_snvbs")
+
+[node name="hair_002" parent="." index="9"]
+material_override = ExtResource("4_wkd8b")
+surface_material_override/0 = ExtResource("4_wkd8b")
+
+[node name="body" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7cbjl")
+
+[node name="hair_003" parent="." index="11"]
+material_override = ExtResource("5_tijsr")
+surface_material_override/0 = ExtResource("5_tijsr")
+
+[node name="buttons" parent="." index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8wr3s")
+
+[node name="bottom" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2jeyd")
