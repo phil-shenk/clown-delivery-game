@@ -23,6 +23,7 @@ var _zoom_scale: float = 0
 var _rot_h: float = 0
 var _rot_v: float = 0
 var _distance: float = 0
+var y_rotation: float = 0
 
 # slide along aim_vector
 var isAiming = false
@@ -63,8 +64,9 @@ func _process(delta):
 func _physics_process(delta):
 	
 	if (isAiming):
-		# lerp toward offset of aim_vector
-		camera_offset = lerp(camera_offset, aim_vector, aim_speed * delta)
+		# lerp toward offset of aim_vector (rotated in player's frame if offset from axis)
+		
+		camera_offset = lerp(camera_offset, aim_vector.rotated(Vector3(0,1,0), _player.rotation.y), aim_speed * delta)
 	else:
 		# lerp back to no offset
 		camera_offset = lerp(camera_offset, Vector3(0,0,0), aim_speed * delta)
@@ -77,7 +79,7 @@ func _physics_process(delta):
 	# the current value and not reach the target value
 	_gimbal_h.rotation.y = lerpf(_gimbal_h.rotation.y, deg_to_rad(_rot_h), rotate_speed * delta)
 	_gimbal_v.rotation.x = lerpf(_gimbal_v.rotation.x, deg_to_rad(_rot_v), rotate_speed * delta)
-
+	y_rotation = _gimbal_h.rotation.y
 	# lerp the camera's current local Z position towards the distance variable as determined by the
 	# controls node's zoom scale value in the _process method
 	#if(isAiming):

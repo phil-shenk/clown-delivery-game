@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjlmg7ce3s5t6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yrs6k"]
+
+[node name="PathVisualizationBall" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("SphereMesh_yrs6k")
+skeleton = NodePath("../..")

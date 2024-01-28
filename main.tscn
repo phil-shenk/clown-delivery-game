@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://du60ctaf0pjq3"]
+[gd_scene load_steps=28 format=3 uid="uid://du60ctaf0pjq3"]
 
 [ext_resource type="Texture2D" uid="uid://b0berln8idyki" path="res://coordinateplane.png" id="1_8yqv2"]
 [ext_resource type="Script" path="res://main.gd" id="1_drvo6"]
@@ -8,6 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://boeealws6qgdm" path="res://resources/image.jpg" id="3_ew4sl"]
 [ext_resource type="PackedScene" uid="uid://dkle2ehmvhrsa" path="res://ControllableCamera.tscn" id="3_f58ys"]
 [ext_resource type="PackedScene" uid="uid://ctxowu5v084oc" path="res://player.tscn" id="7_th2hm"]
+[ext_resource type="PackedScene" uid="uid://buaty8p3d47f6" path="res://resources/buildings/LargeA.tscn" id="11_gxh2p"]
+[ext_resource type="PackedScene" uid="uid://g5y2u7tchyh0" path="res://resources/buildings/LargeB.tscn" id="11_r28lg"]
+[ext_resource type="PackedScene" uid="uid://b8v0mfn12ie5j" path="res://resources/buildings/LargeC.tscn" id="12_kf6df"]
+[ext_resource type="PackedScene" uid="uid://b63h75mq05k17" path="res://resources/buildings/LargeD.tscn" id="13_c1c10"]
+[ext_resource type="PackedScene" uid="uid://b0w8pb2wu4hh" path="res://resources/buildings/LargeE.tscn" id="14_dxf72"]
+[ext_resource type="PackedScene" uid="uid://0dq7m5nu7kkj" path="res://resources/buildings/LargeF.tscn" id="15_g21jq"]
+[ext_resource type="PackedScene" uid="uid://d20qi6vr35ud0" path="res://resources/buildings/LargeG.tscn" id="16_l48at"]
+[ext_resource type="PackedScene" uid="uid://1sfj56oqmxh5" path="res://resources/buildings/SmallA.tscn" id="17_rkk7b"]
+[ext_resource type="PackedScene" uid="uid://iemxwti0p801" path="res://resources/buildings/SmallB.tscn" id="18_i7l1u"]
+[ext_resource type="PackedScene" uid="uid://q2i8cls047ci" path="res://resources/buildings/SmallC.tscn" id="19_6m4m4"]
+[ext_resource type="PackedScene" uid="uid://ceesysi74507w" path="res://resources/buildings/SmallD.tscn" id="20_unfm8"]
+[ext_resource type="PackedScene" uid="uid://cfwh2bnp47p13" path="res://resources/buildings/SmallE.tscn" id="21_nl13m"]
+[ext_resource type="PackedScene" uid="uid://bwi5xt6xjy2dc" path="res://resources/buildings/SmallF.tscn" id="22_o73l6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0pe1"]
 size = Vector3(10, 1, 10)
@@ -91,3 +104,57 @@ curve = SubResource("Curve3D_8rk5r")
 [node name="ThrowForceBar" type="Polygon2D" parent="UICanvasLayer"]
 color = Color(0.45098, 1, 0.462745, 1)
 polygon = PackedVector2Array(10, 10, 10, 10, 10, 40, 10, 40)
+
+[node name="LargeA" parent="." instance=ExtResource("11_gxh2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7655, 0, 0.920708)
+
+[node name="LargeB" parent="." instance=ExtResource("11_r28lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9697, 3.8147e-06, -5.80355)
+
+[node name="LargeC" parent="." instance=ExtResource("12_kf6df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9735, 3.8147e-06, -8.53399)
+
+[node name="LargeD" parent="." instance=ExtResource("13_c1c10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3221, 0, 7.84323)
+
+[node name="LargeA2" parent="." instance=ExtResource("11_gxh2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4681, 0.326422, -100.689)
+
+[node name="LargeB2" parent="." instance=ExtResource("11_r28lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4614, 0.326424, -96.9687)
+
+[node name="LargeC2" parent="." instance=ExtResource("12_kf6df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23682, 0.326422, -97.6463)
+
+[node name="LargeD2" parent="." instance=ExtResource("13_c1c10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0081, 0.326422, -99.7362)
+
+[node name="LargeE" parent="." instance=ExtResource("14_dxf72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8164, 0.326422, -98.1088)
+
+[node name="LargeE2" parent="." instance=ExtResource("14_dxf72")]
+transform = Transform3D(-0.0405155, 0, 0.999179, 0, 1, 0, -0.999179, 0, -0.0405155, -19.1385, 0.326422, -73.2249)
+
+[node name="LargeF" parent="." instance=ExtResource("15_g21jq")]
+transform = Transform3D(-0.021082, 0, -0.999778, 0, 1, 0, 0.999778, 0, -0.021082, 19.9009, 0.326422, -73.7464)
+
+[node name="LargeG" parent="." instance=ExtResource("16_l48at")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.057, 0.326422, -52.6614)
+
+[node name="SmallA" parent="." instance=ExtResource("17_rkk7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82737, 0.326422, -67.696)
+
+[node name="SmallB" parent="." instance=ExtResource("18_i7l1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08551, 0.326422, -68.3096)
+
+[node name="SmallC" parent="." instance=ExtResource("19_6m4m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6605, 0.326422, -66.2164)
+
+[node name="SmallD" parent="." instance=ExtResource("20_unfm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9482, 0.326422, -66.6387)
+
+[node name="SmallE" parent="." instance=ExtResource("21_nl13m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5039, 0.180003, -43.6046)
+
+[node name="SmallF" parent="." instance=ExtResource("22_o73l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0884, 0.326422, -52.4468)
