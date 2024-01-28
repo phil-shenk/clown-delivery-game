@@ -14,7 +14,7 @@ class_name Player
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var _is_capturing: bool = false
+var _is_capturing: bool = true
 
 var input_dir = Vector3.ZERO
 var direction = Vector3.ZERO
@@ -31,17 +31,42 @@ var rotation_amount: float = 0
 @export var turn_speed: float = 20
 var new_forward_speed: float = 0
 var input_x_turn_delay: float = 0
+var pedal_strength: float = 1
+var pedal_decay: float = 2.5
 
+
+@onready var unicycle_wheel: Node3D = $MeshModel/unicycle_stuff/unicycle_bottom
+
+func _ready():
+	if _is_capturing:
+		print("ENABLED MOUSE CAPTURE")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		print("DISABLED MOUSE CAPTURE")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _input(event):
+	# focus on pie-throwing
+	camera.isAiming = Input.is_action_pressed("aim_pie")
+	
+	# reset the pedal motions
+	if Input.is_action_just_pressed("ui_left"):
+		print("pushing left pedal")
+		input_x_turn_delay = -1.0*pedal_strength
+	if Input.is_action_just_pressed("ui_right"):
+		print("pushing right pedal")
+		input_x_turn_delay = pedal_strength
+	
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
 	# pressed (e.g. the Esc key)
 	if Input.is_action_just_pressed("ui_cancel"):
 		_is_capturing = !_is_capturing
 
 		if _is_capturing:
+			print("ENABLED MOUSE CAPTURE")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
+			print("DISABLED MOUSE CAPTURE")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# if the mouse cursor is being captured, update the camera rotation using the relative movement
@@ -64,7 +89,34 @@ func _input(event):
 		# toss some food for good measure
 		var parentLevel : Level = get_parent()
 		parentLevel.throwFood()
+		
+	if Input.is_key_pressed(KEY_B):
+		teleport_to_baltimore()
 
+func teleport_to_baltimore():
+	#var child_node = get_node("path/to/child")
+	var tree = get_tree()
+	var camRoot = get_parent().get_node("CamRoot")
+	get_parent().remove_child(camRoot)
+	get_parent().remove_child(self)
+	print(camRoot)
+	print(camRoot)
+
+	
+	# Queue the current scene to free on the next frame:
+	#var root_node = get_tree().get_root()
+	#var scene_node = root_node.get_node("Level1")
+	#scene_node.queue_free()
+
+	# Load in some scene from our project files:
+	#var new_scene_resource = load("res://Levels/Level2.tscn") # Load the new level from disk
+	#var new_scene_node = new_scene_resource.instantiate() # Create an actual node of it for the game to use
+	#root_node.add_child(new_scene_node) # Add to the tree so the level starts processing
+	#get_node("path/to/new/parent").add_child(child_node)
+	tree.change_scene_to_file("res://Baltmore.tscn")
+	tree.current_scene.add_child(self)
+	tree.current_scene.add_child(camRoot)
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -88,7 +140,7 @@ func _physics_process(delta):
 	set_new_velocity(delta)
 	velocity = Vector3(new_velocity.x, velocity.y, new_velocity.z)
 	
-	print("velocity: " + str(velocity))
+	#print("velocity: " + str(velocity))
 	
 	move_and_slide()
 	
@@ -112,7 +164,13 @@ func set_new_velocity(delta):
 	var prev_velocity = velocity
 	prev_velocity.y = 0
 	
-	input_x_turn_delay = lerpf(input_x_turn_delay, input_dir.x, turn_speed * delta)
+	#input_x_turn_delay = lerpf(input_x_turn_delay, input_dir.x, turn_speed * delta)
+	
+	### FINITE PEDAL AMOUNTS
+	# start input_x_turn_delay at a const when pressed, lerp to 0
+	# (i'll do that in _input() when it's just pressed)
+	input_x_turn_delay = lerpf(input_x_turn_delay, 0, pedal_decay * delta)
+
 	
 	rotation_amount = -input_x_turn_delay
 	
@@ -125,7 +183,7 @@ func set_new_velocity(delta):
 	var aim = get_global_transform().basis;
 	new_velocity = aim.z * new_forward_speed
 	
-	
+	unicycle_wheel.rotate_object_local(Vector3(1, 0, 0), new_forward_speed * 0.1)
 	
 
 	#forward_velocity = forward_velocity.normalized() * (forward_velocity.length() + abs(direction.x * pedal_speed_added) - total_drag)
