@@ -1,15 +1,14 @@
 extends Skeleton3D
 
 @onready var rb: RigidBody3D = $RigidBody3D
-@export var was_hit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 func get_hit():
-	was_hit = true
 	physical_bones_start_simulation()
+	get_parent().get_parent().get_hit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

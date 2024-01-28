@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcs7wewcg8x40"]
+[gd_scene load_steps=14 format=3 uid="uid://dcs7wewcg8x40"]
 
 [ext_resource type="PackedScene" uid="uid://yd1e7ai2k5cr" path="res://player.glb" id="1_g5mp5"]
 [ext_resource type="Script" path="res://ragdoll.gd" id="2_7vtqt"]
+[ext_resource type="Script" path="res://ragdoll_guy.gd" id="2_072ve"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tqlob"]
 radius = 2.756
@@ -44,6 +45,7 @@ radius = 0.143073
 height = 1.43073
 
 [node name="ragdoll_guy" instance=ExtResource("1_g5mp5")]
+script = ExtResource("2_072ve")
 
 [node name="Skeleton" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
