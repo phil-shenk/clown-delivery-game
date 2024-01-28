@@ -51,10 +51,10 @@ func _input(event):
 	
 	# reset the pedal motions
 	if Input.is_action_just_pressed("ui_left"):
-		print("pushing left pedal")
+		#print("pushing left pedal")
 		input_x_turn_delay = -1.0*pedal_strength
 	if Input.is_action_just_pressed("ui_right"):
-		print("pushing right pedal")
+		#print("pushing right pedal")
 		input_x_turn_delay = pedal_strength
 	
 	# toggle the mouse cursor's capture mode when the ui_cancel action is
