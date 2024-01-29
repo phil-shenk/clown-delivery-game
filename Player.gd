@@ -51,7 +51,7 @@ func _ready():
 
 func _input(event):
 	# focus on pie-throwing
-	camera.isAiming = Input.is_action_pressed("aim_pie")
+	camera.isAiming = not Input.is_action_pressed("aim_pie")
 	
 	# reset the pedal motions
 	if Input.is_action_just_pressed("ui_left"):
