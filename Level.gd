@@ -110,7 +110,6 @@ func _process(delta):
 	var new_targets_hit = count_targets_hit()
 	if new_targets_hit > targets_hit:
 		targets_hit = new_targets_hit
-		print("new target hit! count is now ", new_targets_hit)
 		scoreLabel.text = "Score: "+str(targets_hit)+" out of "+str(count_targets())
 
 

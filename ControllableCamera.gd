@@ -26,7 +26,7 @@ var _distance: float = 0
 var y_rotation: float = 0
 
 # slide along aim_vector
-var isAiming = false
+var isAiming = true
 var aim_zoom: float = 0.01
 var aim_speed: float = 10
 var aim_vector: Vector3 = Vector3(0,2,0)
