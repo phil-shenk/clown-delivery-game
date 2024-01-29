@@ -93,13 +93,13 @@ func _input(event):
 		if Input.is_action_just_pressed("zoom_out"):
 			camera._zoom_scale = clamp(camera._zoom_scale + camera.zoom_step, 0, 1)
 
-	if Input.is_key_pressed(KEY_F):
-		# toss some food for good measure
-		var parentLevel : Level = get_parent()
-		parentLevel.throwFood()
-		
-	if Input.is_key_pressed(KEY_B):
-		teleport_to_baltimore()
+	#if Input.is_key_pressed(KEY_F):
+	#	# toss some food for good measure
+	#	var parentLevel : Level = get_parent()
+	#	parentLevel.throwFood()
+	#	
+	#if Input.is_key_pressed(KEY_B):
+	#	teleport_to_baltimore()
 
 func teleport_to_baltimore():
 	#var child_node = get_node("path/to/child")
